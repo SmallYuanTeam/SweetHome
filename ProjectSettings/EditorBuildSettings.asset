@@ -8,4 +8,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/GuysRoom.unity
+    guid: 48e16d09eb49b294287aad55bda32e03
+  - enabled: 1
+    path: Assets/Scenes/GuysTable.unity
+    guid: 8e7e754f0963e104b8c48526fca2d5af
+  - enabled: 1
+    path: Assets/Scenes/GuysGarderobe.unity
+    guid: 21c0aab249eee134c86a6db154c0a52c
   m_configObjects: {}

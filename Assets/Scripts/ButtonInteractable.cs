@@ -23,9 +23,19 @@ public class ButtonInteractable : MonoBehaviour
         //如果現在是在弟弟房間
         if (GameMaster.GetComponent<GameMasterScript>().SelectedRoom == SelectedRoom.GuysRoom)
         {
-            GameMaster.GetComponent<GameMasterScript>().GuysRoomitem = (GuysRoomItem)Enum.Parse(typeof(GuysRoomItem), buttonName);
+            GameMaster.GetComponent<GameMasterScript>().GuysRoomItem = (GuysRoomItem)Enum.Parse(typeof(GuysRoomItem), buttonName);
             GameMaster.GetComponent<GameMasterScript>().Selection();
         }
-        
+        //如果現在是在弟弟的桌子
+        else if (GameMaster.GetComponent<GameMasterScript>().SelectedRoom == SelectedRoom.GuysTable)
+        {
+            GameMaster.GetComponent<GameMasterScript>().GuysTableItem = (GuysTableItem)Enum.Parse(typeof(GuysTableItem), buttonName);
+            GameMaster.GetComponent<GameMasterScript>().Selection();
+        }
+        else if (GameMaster.GetComponent<GameMasterScript>().SelectedRoom == SelectedRoom.GuysGarderobe)
+        {
+            GameMaster.GetComponent<GameMasterScript>().GuysGarderobeItem = (GuysGarderobeItem)Enum.Parse(typeof(GuysGarderobeItem), buttonName);
+            GameMaster.GetComponent<GameMasterScript>().Selection();
+        }
     }
 }
