@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using Inv;
 public enum SelectedRoom
 {
     WorkRoom, // 工作室
@@ -46,6 +47,7 @@ public enum GuysGarderobeItem
 public class GameMasterScript : MonoBehaviour
 {
     public SceneManagerHelper sceneManagerHelper;
+    private Inventory inventory;
     public SelectedRoom SelectedRoom;
     public GuysRoomItem GuysRoomItem;
     public GuysTableItem GuysTableItem;
@@ -56,6 +58,7 @@ public class GameMasterScript : MonoBehaviour
     void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
+        inventory = new Inventory();
     }
     void Start()
     {
