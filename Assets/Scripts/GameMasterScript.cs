@@ -11,7 +11,7 @@ public enum SelectedRoom
     GuysBed, // 弟弟床
     BrothersRoom, // 兄長房間
     ParentsRoom,// 父母房間
-    SecendFloor,// 二樓
+    SecondFloor,// 二樓
     FirstFloor, // 一樓
     LivingRoom, // 客廳
     GuestRoom,  // 客房
