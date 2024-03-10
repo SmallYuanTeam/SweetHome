@@ -3,13 +3,13 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class GuysGarderobe : MonoBehaviour
+public class GuysCarpat : MonoBehaviour
 {
     // 自己身上的CanInteractAgain
     public CanInteractAgain canInteractAgain;
     public Image imageA;
     public Image imageB;
-    public GameObject Pants;
+    public GameObject Clothes;
 
     private bool isShowingA = true;
     public float fadeDuration = 1f;
@@ -24,7 +24,6 @@ public class GuysGarderobe : MonoBehaviour
         if (canInteractAgain.interactCount == 0)
         {
             StartCoroutine(FadeTransition());
-        
         }
     }
      IEnumerator FadeTransition()
@@ -39,12 +38,13 @@ public class GuysGarderobe : MonoBehaviour
             float t = elapsedTime / fadeDuration;
             fadeOutImage.color = new Color(fadeOutImage.color.r, fadeOutImage.color.g, fadeOutImage.color.b, 1 - t);
             fadeInImage.color = new Color(fadeInImage.color.r, fadeInImage.color.g, fadeInImage.color.b, t);
-            Pants.SetActive(isShowingA);
-            Pants.GetComponent<Image>().color = fadeInImage.color;
-            Pants.GetComponent<Button>().interactable = isShowingA;
+            Clothes.SetActive(isShowingA);
+            Clothes.GetComponent<Image>().color = fadeInImage.color;
+            Clothes.GetComponent<Button>().interactable = isShowingA;
             yield return null;
         }
 
         isShowingA = !isShowingA; // Toggle the flag
+        
     }
 }

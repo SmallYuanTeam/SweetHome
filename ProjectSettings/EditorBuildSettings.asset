@@ -17,4 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GuysGarderobe.unity
     guid: 21c0aab249eee134c86a6db154c0a52c
+  - enabled: 1
+    path: Assets/Scenes/GuysCarpet.unity
+    guid: 045c782e9fb3a534590121f8f35e5ce1
+  - enabled: 1
+    path: Assets/Scenes/GuysBed.unity
+    guid: fe86d0acb7a4eca4caf8b46e3db83188
   m_configObjects: {}

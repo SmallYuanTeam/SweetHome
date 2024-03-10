@@ -7,6 +7,8 @@ public enum SelectedRoom
     GuysRoom, // 弟弟房間
     GuysTable, // 弟弟桌子
     GuysGarderobe, // 弟弟衣櫃
+    GuysCarpet, // 弟弟地毯
+    GuysBed, // 弟弟床
     BrothersRoom, // 兄長房間
     ParentsRoom,// 父母房間
     SecendFloor,// 二樓
@@ -31,7 +33,7 @@ public enum GuysRoomItem
     Chair,
     GarbageCan
 }
-public enum GuysTableItem
+public enum GuysTableItem // 完成
 {
     none,
     Light,
@@ -41,9 +43,24 @@ public enum GuysGarderobeItem
 {
     none,
     Garderobe,
+    Pant,
     Return
 }
-
+public enum GuysCarpetItem // 完成
+{
+    none,
+    Carpet,
+    Clothes,
+    Return
+}
+public enum GuysBedItem
+{
+    none,
+    Bed,
+    Puppet,
+    Glass,
+    Return
+}
 public class GameMasterScript : MonoBehaviour
 {
     public SceneManagerHelper sceneManagerHelper;
@@ -51,6 +68,9 @@ public class GameMasterScript : MonoBehaviour
     public GuysRoomItem GuysRoomItem;
     public GuysTableItem GuysTableItem;
     public GuysGarderobeItem GuysGarderobeItem;
+    public GuysCarpetItem GuysCarpetItem;
+    public GuysBedItem GuysBedItem;
+
     DayOneDialog dayOneDialog;
 
 
@@ -90,7 +110,9 @@ public class GameMasterScript : MonoBehaviour
                     break;
                 case GuysRoomItem.Bed:
                     Debug.Log("You selected the bed");
-                    dayOneDialog.GetRoomItem("Bed");
+                    List<string> GuysBedScene = new List<string> {"GuysBed"};
+                    sceneManagerHelper.LoadSceneWithTransition(GuysBedScene);
+                    SelectedRoom = SelectedRoom.GuysBed;
                     break;
                 case GuysRoomItem.Door:
                     Debug.Log("You selected the door");
@@ -98,7 +120,9 @@ public class GameMasterScript : MonoBehaviour
                     break;
                 case GuysRoomItem.Carpet:
                     Debug.Log("You selected the carpet");
-                    //dayOneDialog.GetRoomItem("Carpet");
+                    List<string> GuysCarpetScene = new List<string> {"GuysCarpet"};
+                    sceneManagerHelper.LoadSceneWithTransition(GuysCarpetScene);
+                    SelectedRoom = SelectedRoom.GuysCarpet;
                     break;
                 case GuysRoomItem.Chair:
                     Debug.Log("You selected the chair");
@@ -144,6 +168,60 @@ public class GameMasterScript : MonoBehaviour
                     }
                     break;
                 case GuysGarderobeItem.Return:
+                    Debug.Log("You selected the return");
+                    List<string> GuyRoomScenes = new List<string> {"GuysRoom"};
+                    sceneManagerHelper.LoadSceneWithTransition(GuyRoomScenes);
+                    SelectedRoom = SelectedRoom.GuysRoom;
+                    break;
+                default:
+                    Debug.Log("You selected nothing");
+                    break;
+            }
+        }
+        else if (SelectedRoom == SelectedRoom.GuysCarpet)
+        {
+            switch (GuysCarpetItem)
+            {
+                case GuysCarpetItem.Carpet:
+                    Debug.Log("You selected the carpet");
+                    SelectedObject = GameObject.Find("Carpet");
+                    if (SelectedObject != null)
+                    {
+                        interactScript = SelectedObject.GetComponent<CanInteractAgain>();
+                    }
+                    break;
+                case GuysCarpetItem.Return:
+                    Debug.Log("You selected the return");
+                    List<string> GuyRoomScenes = new List<string> {"GuysRoom"};
+                    sceneManagerHelper.LoadSceneWithTransition(GuyRoomScenes);
+                    SelectedRoom = SelectedRoom.GuysRoom;
+                    break;
+                default:
+                    Debug.Log("You selected nothing");
+                    break;
+            }
+        }
+        else if (SelectedRoom == SelectedRoom.GuysBed)
+        {
+            switch (GuysBedItem)
+            {
+                case GuysBedItem.Bed:
+                    Debug.Log("You selected the bed");
+                    SelectedObject = GameObject.Find("Bed");
+                    if (SelectedObject != null)
+                    {
+                        interactScript = SelectedObject.GetComponent<CanInteractAgain>();
+                    }
+                    break;
+                case GuysBedItem.Puppet:
+                    Debug.Log("You selected the puppet");
+                    dayOneDialog.GetRoomItem("Puppet");
+                    break;
+                case GuysBedItem.Glass:
+                    Debug.Log("You selected the glass");
+                    dayOneDialog.GetRoomItem("Glass");
+                    break;
+                case GuysBedItem.Return:
                     Debug.Log("You selected the return");
                     List<string> GuyRoomScenes = new List<string> {"GuysRoom"};
                     sceneManagerHelper.LoadSceneWithTransition(GuyRoomScenes);
