@@ -158,6 +158,8 @@ MonoBehaviour:
   GuysRoomItem: 0
   GuysTableItem: 0
   GuysGarderobeItem: 0
+  GuysCarpetItem: 0
+  GuysBedItem: 0
 --- !u!4 &124984191
 Transform:
   m_ObjectHideFlags: 0
