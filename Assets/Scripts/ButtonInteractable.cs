@@ -47,5 +47,10 @@ public class ButtonInteractable : MonoBehaviour
             GameMaster.GetComponent<GameMasterScript>().GuysBedItem = (GuysBedItem)Enum.Parse(typeof(GuysBedItem), buttonName);
             GameMaster.GetComponent<GameMasterScript>().Selection();
         }
+        else if (GameMaster.GetComponent<GameMasterScript>().SelectedRoom == SelectedRoom.SecondFloor)
+        {
+            GameMaster.GetComponent<GameMasterScript>().SecondFloorItem = (SecondFloorItem)Enum.Parse(typeof(SecondFloorItem), buttonName);
+            GameMaster.GetComponent<GameMasterScript>().Selection();
+        }
     }
 }

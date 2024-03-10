@@ -9,9 +9,9 @@ public enum SelectedRoom
     GuysGarderobe, // 弟弟衣櫃
     GuysCarpet, // 弟弟地毯
     GuysBed, // 弟弟床
+    SecondFloor,// 二樓
     BrothersRoom, // 兄長房間
     ParentsRoom,// 父母房間
-    SecondFloor,// 二樓
     FirstFloor, // 一樓
     LivingRoom, // 客廳
     GuestRoom,  // 客房
@@ -39,7 +39,7 @@ public enum GuysTableItem // 完成
     Light,
     Return
 }
-public enum GuysGarderobeItem
+public enum GuysGarderobeItem // 完成
 {
     none,
     Garderobe,
@@ -61,6 +61,25 @@ public enum GuysBedItem
     Glass,
     Return
 }
+
+public enum SecondFloorItem
+{
+    none,
+    BrothersRoomDoor,
+    ParentsRoomDoor,
+    GuestRoomDoor,
+    StudyRoomDoor,
+    GuysRoomDoor,
+}
+
+public enum BrothersRoomItem
+{
+    none
+}
+public enum ParentsRoomItem
+{
+    none
+}
 public class GameMasterScript : MonoBehaviour
 {
     public SceneManagerHelper sceneManagerHelper;
@@ -70,6 +89,7 @@ public class GameMasterScript : MonoBehaviour
     public GuysGarderobeItem GuysGarderobeItem;
     public GuysCarpetItem GuysCarpetItem;
     public GuysBedItem GuysBedItem;
+    public SecondFloorItem SecondFloorItem;
 
     DayOneDialog dayOneDialog;
 
@@ -116,7 +136,9 @@ public class GameMasterScript : MonoBehaviour
                     break;
                 case GuysRoomItem.Door:
                     Debug.Log("You selected the door");
-                    //dayOneDialog.GetRoomItem("Door");
+                    List<string> SecondFloorScenes = new List<string> {"SecondFloor"};
+                    sceneManagerHelper.LoadSceneWithTransition(SecondFloorScenes);
+                    SelectedRoom = SelectedRoom.SecondFloor;
                     break;
                 case GuysRoomItem.Carpet:
                     Debug.Log("You selected the carpet");
@@ -225,6 +247,45 @@ public class GameMasterScript : MonoBehaviour
                     Debug.Log("You selected the return");
                     List<string> GuyRoomScenes = new List<string> {"GuysRoom"};
                     sceneManagerHelper.LoadSceneWithTransition(GuyRoomScenes);
+                    SelectedRoom = SelectedRoom.GuysRoom;
+                    break;
+                default:
+                    Debug.Log("You selected nothing");
+                    break;
+            }
+        }
+        else if (SelectedRoom == SelectedRoom.SecondFloor)
+        {
+            switch (SecondFloorItem)
+            {
+                case SecondFloorItem.BrothersRoomDoor:
+                    Debug.Log("You selected the brothers room door");
+                    List<string> BrothersRoomScenes = new List<string> {"BrothersRoom"};
+                    sceneManagerHelper.LoadSceneWithTransition(BrothersRoomScenes);
+                    SelectedRoom = SelectedRoom.BrothersRoom;
+                    break;
+                case SecondFloorItem.ParentsRoomDoor:
+                    Debug.Log("You selected the parents room door");
+                    List<string> ParentsRoomScenes = new List<string> {"ParentsRoom"};
+                    sceneManagerHelper.LoadSceneWithTransition(ParentsRoomScenes);
+                    SelectedRoom = SelectedRoom.ParentsRoom;
+                    break;
+                case SecondFloorItem.GuestRoomDoor:
+                    Debug.Log("You selected the guest room door");
+                    List<string> GuestRoomScenes = new List<string> {"GuestRoom"};
+                    sceneManagerHelper.LoadSceneWithTransition(GuestRoomScenes);
+                    SelectedRoom = SelectedRoom.GuestRoom;
+                    break;
+                case SecondFloorItem.StudyRoomDoor:
+                    Debug.Log("You selected the study room door");
+                    List<string> StudyRoomScenes = new List<string> {"StudyRoom"};
+                    sceneManagerHelper.LoadSceneWithTransition(StudyRoomScenes);
+                    SelectedRoom = SelectedRoom.BookRoom;
+                    break;
+                case SecondFloorItem.GuysRoomDoor:
+                    Debug.Log("You selected the guys room door");
+                    List<string> GuysRoomScenes = new List<string> {"GuysRoom"};
+                    sceneManagerHelper.LoadSceneWithTransition(GuysRoomScenes);
                     SelectedRoom = SelectedRoom.GuysRoom;
                     break;
                 default:
