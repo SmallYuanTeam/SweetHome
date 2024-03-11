@@ -258,7 +258,7 @@ GameObject:
   - component: {fileID: 624815471}
   - component: {fileID: 624815470}
   m_Layer: 5
-  m_Name: UpStair
+  m_Name: SecondFloorDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

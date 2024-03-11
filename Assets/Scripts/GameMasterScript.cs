@@ -70,6 +70,16 @@ public enum SecondFloorItem
     GuestRoomDoor,
     StudyRoomDoor,
     GuysRoomDoor,
+    FirstFloorDoor
+}
+public enum FirstFloorItem
+{
+    none,
+    SecondFloorDoor,
+    UtilityRoomDoor,
+    ShoeBox,
+    RestRoomDoor,
+    GateExit
 }
 
 public enum BrothersRoomItem
@@ -90,6 +100,7 @@ public class GameMasterScript : MonoBehaviour
     public GuysCarpetItem GuysCarpetItem;
     public GuysBedItem GuysBedItem;
     public SecondFloorItem SecondFloorItem;
+    public FirstFloorItem FirstFloorItem;
 
     DayOneDialog dayOneDialog;
 
@@ -287,6 +298,49 @@ public class GameMasterScript : MonoBehaviour
                     List<string> GuysRoomScenes = new List<string> {"GuysRoom"};
                     sceneManagerHelper.LoadSceneWithTransition(GuysRoomScenes);
                     SelectedRoom = SelectedRoom.GuysRoom;
+                    break;
+                case SecondFloorItem.FirstFloorDoor:
+                    Debug.Log("You selected the first floor door");
+                    List<string> FirstFloorScenes = new List<string> {"FirstFloor"};
+                    sceneManagerHelper.LoadSceneWithTransition(FirstFloorScenes);
+                    SelectedRoom = SelectedRoom.FirstFloor;
+                    break;
+                default:
+                    Debug.Log("You selected nothing");
+                    break;
+            }
+        }
+        else if (SelectedRoom == SelectedRoom.FirstFloor)
+        {
+            switch (FirstFloorItem)
+            {
+                case FirstFloorItem.UtilityRoomDoor:
+                    Debug.Log("You selected the utility room door");
+                    List<string> UtilityRoomScenes = new List<string> {"UtilityRoom"};
+                    sceneManagerHelper.LoadSceneWithTransition(UtilityRoomScenes);
+                    SelectedRoom = SelectedRoom.UtilityRoom;
+                    break;
+                case FirstFloorItem.ShoeBox:
+                    Debug.Log("You selected the shoe box");
+                    dayOneDialog.GetRoomItem("ShoeBox");
+                    break;
+                case FirstFloorItem.RestRoomDoor:
+                    Debug.Log("You selected the rest room door");
+                    List<string> RestRoomScenes = new List<string> {"RestRoom"};
+                    sceneManagerHelper.LoadSceneWithTransition(RestRoomScenes);
+                    SelectedRoom = SelectedRoom.Bathroom;
+                    break;
+                case FirstFloorItem.GateExit:
+                    Debug.Log("You selected the gate exit");
+                    List<string> GurdenScenes = new List<string> {"Gurden"};
+                    sceneManagerHelper.LoadSceneWithTransition(GurdenScenes);
+                    SelectedRoom = SelectedRoom.Gurden;
+                    break;
+                case FirstFloorItem.SecondFloorDoor:
+                    Debug.Log("You selected the second floor door");
+                    List<string> SecondFloorScenes = new List<string> {"SecondFloor"};
+                    sceneManagerHelper.LoadSceneWithTransition(SecondFloorScenes);
+                    SelectedRoom = SelectedRoom.SecondFloor;
                     break;
                 default:
                     Debug.Log("You selected nothing");
