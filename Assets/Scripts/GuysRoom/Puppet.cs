@@ -8,24 +8,35 @@ public class Puppet : MonoBehaviour
 {
     public Image imageA;
     public Image imageB;
+    public GameObject player;
+    public InventoryUI inventoryUI;
     private bool isShowingA = true;
     public GameObject Item;
     List<string> itemIDToCheck = new List<string> {"Hat", "Cloth", "Pant", "Shoe"};
+    public List<ItemObject> itemsToCheck;
     bool hasAllItems;
     float fadeDuration = 1.0f; 
 
     public void Awake()
     {
         hasAllItems = Player.Instance.HaveObtainedAllItems(itemIDToCheck);
+        player = GameObject.Find("Player");
+        inventoryUI = GameObject.Find("InventoryScreen").GetComponent<InventoryUI>();
+
         SetItemAlpha(0); 
     }
 
     public void ClickPuppet()
     {
-        if (!hasAllItems)
+        if (hasAllItems)
         {
             StartCoroutine(FadeInItem());
             StartCoroutine(FadeTransition());
+            if (player != null)
+            {
+                Player.Instance.inventory.RemoveListItem(itemsToCheck);
+                inventoryUI.UpdateInventoryUI();
+            }
         }
     }
     IEnumerator FadeTransition()

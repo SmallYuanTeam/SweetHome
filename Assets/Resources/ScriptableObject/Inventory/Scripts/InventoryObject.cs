@@ -33,6 +33,10 @@ public class InventoryObject : ScriptableObject
             }
         }
     }
+    public void RemoveListItem(List<ItemObject> _item)
+    {
+        Container.RemoveAll(slot => _item.Contains(slot.item));
+    }
 }
 [System.Serializable]
 public class InventorySlot

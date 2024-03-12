@@ -927,3 +927,8 @@ MonoBehaviour:
   imageA: {fileID: 159298722}
   imageB: {fileID: 194956277}
   Item: {fileID: 383792603}
+  itemsToCheck:
+  - {fileID: 11400000, guid: 002d8621abfc30e4b810ec8290164cee, type: 2}
+  - {fileID: 11400000, guid: 2ab1fed2458fa0b4392b0a3b76412285, type: 2}
+  - {fileID: 11400000, guid: bff7d7f7e136ac246aadf8efcd532f18, type: 2}
+  - {fileID: 11400000, guid: 31fa786f3bf97d5458848ccda50ef7f8, type: 2}
