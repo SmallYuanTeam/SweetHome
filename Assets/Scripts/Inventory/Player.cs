@@ -40,6 +40,18 @@ public class Player : MonoBehaviour
     {
         return obtainedItemIDs.Contains(itemID);
     }
+    public bool HaveObtainedAllItems(List<string> itemIDs)
+    {
+        foreach (string id in itemIDs)
+        {
+            if (!obtainedItemIDs.Contains(id))
+            {
+                return false; // 如果有任何一个 ID 没有被获取过，返回 false
+            }
+        }
+        return true; // 所有 ID 都已被获取过，返回 true
+    }
+
     // 遊戲結束時，背包內的物品會被清空
     public void OnApplicationQuit()
     {

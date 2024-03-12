@@ -17,7 +17,7 @@ public class Item : MonoBehaviour
         player = FindObjectOfType<Player>();
         if (Player.Instance.HasObtainedItem(item.itemID))
         {
-            Destroy(gameObject); // 如果物品已被取得过，隐藏之
+            Destroy(gameObject); 
         }
         else
         {

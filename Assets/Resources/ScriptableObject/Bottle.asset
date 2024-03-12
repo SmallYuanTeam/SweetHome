@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7acf0c272a5af24aa0f7fdfbe09a2aa, type: 3}
-  m_Name: Light
+  m_Script: {fileID: 11500000, guid: f74e6a60a0bfdbb49a8667506f5c292d, type: 3}
+  m_Name: Bottle
   m_EditorClassIdentifier: 
-  itemID: Light
-  icon: {fileID: 21300000, guid: 02b4c05c8f90ce54f929e9235ef0a20d, type: 3}
-  type: 2
-  description: "\u4E00\u96BB\u6C92\u96FB\u7684\u624B\u96FB\u7B52"
+  itemID: Bottle
+  icon: {fileID: 21300000, guid: e68df5687e5466c4a8d71a5ac008a592, type: 3}
+  type: 1
+  description: "\u9152\u74F6\u7684\u788E\u7247"

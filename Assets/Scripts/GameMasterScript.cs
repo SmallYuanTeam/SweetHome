@@ -59,7 +59,7 @@ public enum GuysBedItem // 完成
     none,
     Bed,
     Puppet,
-    Glass,
+    Bottle,
     Return
 }
 public enum SecondFloorItem // 完成
@@ -94,9 +94,11 @@ public enum LivingRoomItem
     Sofa,
     FirstFloorDoor
 }
-public enum UtilityRoom
+public enum UtilityRoomItem
 {
     none,
+    Broom,
+    TowelRack,
     FirstFloorDoor
 }
 
@@ -120,7 +122,7 @@ public class GameMasterScript : MonoBehaviour
     public SecondFloorItem SecondFloorItem;
     public FirstFloorItem FirstFloorItem;
     public LivingRoomItem LivingRoomItem;
-    public UtilityRoom UtilityRoom;
+    public UtilityRoomItem UtilityRoomItem;
 
     DayOneDialog dayOneDialog;
 
@@ -270,9 +272,9 @@ public class GameMasterScript : MonoBehaviour
                     Debug.Log("You selected the puppet");
                     dayOneDialog.GetRoomItem("Puppet");
                     break;
-                case GuysBedItem.Glass:
-                    Debug.Log("You selected the glass");
-                    dayOneDialog.GetRoomItem("Glass");
+                case GuysBedItem.Bottle:
+                    Debug.Log("You selected the Bottle");
+                    dayOneDialog.GetRoomItem("Bottle");
                     break;
                 case GuysBedItem.Return:
                     Debug.Log("You selected the return");
@@ -348,7 +350,7 @@ public class GameMasterScript : MonoBehaviour
                     break;
                 case FirstFloorItem.ShoeBox:
                     Debug.Log("You selected the shoe box");
-                    dayOneDialog.GetRoomItem("ShoeBox");
+                    //dayOneDialog.GetRoomItem("ShoeBox");
                     break;
                 case FirstFloorItem.RestRoomDoor:
                     Debug.Log("You selected the rest room door");
@@ -414,13 +416,21 @@ public class GameMasterScript : MonoBehaviour
         }
         else if (SelectedRoom == SelectedRoom.UtilityRoom)
         {
-            switch (UtilityRoom)
+            switch (UtilityRoomItem)
             {
-                case UtilityRoom.FirstFloorDoor:
+                case UtilityRoomItem.FirstFloorDoor:
                     Debug.Log("You selected the first floor door");
                     List<string> FirstFloorScenes = new List<string> {"FirstFloor"};
                     sceneManagerHelper.LoadSceneWithTransition(FirstFloorScenes);
                     SelectedRoom = SelectedRoom.FirstFloor;
+                    break;
+                case UtilityRoomItem.Broom:
+                    Debug.Log("You selected the broom");
+                    dayOneDialog.GetRoomItem("Broom");
+                    break;
+                case UtilityRoomItem.TowelRack:
+                    Debug.Log("You selected the towel rack");
+                    //dayOneDialog.GetRoomItem("TowelRack");
                     break;
                 default:
                     Debug.Log("You selected nothing");
