@@ -86,47 +86,46 @@ public class InventoryUI : MonoBehaviour
 
     public void UpdateInventoryUI()
     {
+        // 載入預設的物品槽圖片
+        Sprite defaultSprite = Resources.Load<Sprite>("Sprites/UI/Inventory/InvSlot");
+
+        // 初始化所有物品槽為預設圖片
         foreach (var itemSlot in itemSlots)
         {
-            Image targetImage = null;
-            foreach (Transform child in itemSlot.transform)
-            {
-                if (child.CompareTag("ItemSlotImage"))
-                {
-                    targetImage = child.GetComponent<Image>();
-                    break;
-                }
-            }
-            
+            Image targetImage = GetItemSlotImage(itemSlot);
             if (targetImage != null)
             {
-                targetImage.sprite = null;
+                // 將每個物品槽的圖片設置為預設圖片
+                targetImage.sprite = defaultSprite;
             }
         }
 
-        
+        // 更新物品槽以顯示當前背包中的物品
         for (int i = 0; i < player.inventory.Container.Count && i < itemSlots.Length; i++)
         {
-            Image targetImage = null;
-            foreach (Transform child in itemSlots[i].transform)
-            {
-                if (child.CompareTag("ItemSlotImage"))
-                {
-                    targetImage = child.GetComponent<Image>();
-                    break;
-                }
-            }
-
+            Image targetImage = GetItemSlotImage(itemSlots[i]);
             if (targetImage != null && player.inventory.Container[i] != null && player.inventory.Container[i].item != null)
             {
+                // 如果物品槽有物品，則顯示該物品的圖標
                 targetImage.sprite = player.inventory.Container[i].item.icon;
             }
-            else
-            {
-                Debug.LogError($"在索引 {i} 檢查到空引用");
-            }
+            // 如果無物品或出現空引用，則已經預設為預設圖片，無需進一步操作
         }
     }
+
+    // Helper 方法來查找物品槽中的 Image 組件
+    private Image GetItemSlotImage(Button itemSlot)
+    {
+        foreach (Transform child in itemSlot.transform)
+        {
+            if (child.CompareTag("ItemSlotImage"))
+            {
+                return child.GetComponent<Image>();
+            }
+        }
+        return null; // 沒有找到帶有 "ItemSlotImage" 標籤的子物件
+    }
+
 
 
     void TryCraftItem()
