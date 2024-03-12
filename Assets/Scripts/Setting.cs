@@ -55,6 +55,10 @@ public class Setting : MonoBehaviour
         mainSettingPanel.SetActive(true);
         PausePanel.SetActive(true);
     }
+    public void CloseGame()
+    {
+        Application.Quit();
+    }
     public void ReturnToGame()
     {
         moreSettingsPanel.SetActive(false);
