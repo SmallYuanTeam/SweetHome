@@ -9,7 +9,7 @@ public class GuysGarderobe : MonoBehaviour
     public CanInteractAgain canInteractAgain;
     public Image imageA;
     public Image imageB;
-    public GameObject Pants;
+    public GameObject Item;
 
     private bool isShowingA = true;
     public float fadeDuration = 1f;
@@ -39,12 +39,19 @@ public class GuysGarderobe : MonoBehaviour
             float t = elapsedTime / fadeDuration;
             fadeOutImage.color = new Color(fadeOutImage.color.r, fadeOutImage.color.g, fadeOutImage.color.b, 1 - t);
             fadeInImage.color = new Color(fadeInImage.color.r, fadeInImage.color.g, fadeInImage.color.b, t);
-            Pants.SetActive(isShowingA);
-            Pants.GetComponent<Image>().color = fadeInImage.color;
-            Pants.GetComponent<Button>().interactable = isShowingA;
+            if (Item != null)
+            {
+                ItemPickUp(fadeInImage);
+            }
             yield return null;
         }
 
         isShowingA = !isShowingA; // Toggle the flag
+    }
+    void ItemPickUp(Image image)
+    {
+        Item.SetActive(isShowingA);
+        Item.GetComponent<Image>().color = image.color;
+        Item.GetComponent<Button>().interactable = isShowingA;
     }
 }

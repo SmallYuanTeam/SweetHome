@@ -13,9 +13,17 @@ public enum ItemType
 }
 public abstract class ItemObject : ScriptableObject
 {
-    public GameObject prefab;
+    public string itemID;
     public Sprite icon;
     public ItemType type;
     [TextArea(15, 20)]
     public string description;
+    private void OnValidate()
+    {
+        // 如果 itemId 为空，则使用物品的名字作为 itemId
+        if (string.IsNullOrEmpty(itemID))
+        {
+            itemID = name; // 使用 Unity 编辑器中的物品名称
+        }
+    }
 }

@@ -15,10 +15,21 @@ public class Item : MonoBehaviour
         button = GetComponent<Button>();
         // 找到玩家
         player = FindObjectOfType<Player>();
-        button.onClick.AddListener(AddItem);
+        if (Player.Instance.HasObtainedItem(item.itemID))
+        {
+            Destroy(gameObject); // 如果物品已被取得过，隐藏之
+        }
+        else
+        {
+            button.onClick.AddListener(OnItemPickedUp);
+        }
+        
     }
-    void AddItem()
+    public void OnItemPickedUp()
     {
-        player.AddItemToInventory(item);
+        // 假设这个方法在物品被玩家拾取时被调用
+        Player.Instance.AddItemToInventory(item);
+        Player.Instance.AddObtainedItemID(item.itemID);
+        gameObject.SetActive(false); // 隐藏物品
     }
 }

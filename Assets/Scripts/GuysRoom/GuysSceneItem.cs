@@ -3,13 +3,13 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class GuysCarpat : MonoBehaviour
+public class GuysSceneItem : MonoBehaviour
 {
     // 自己身上的CanInteractAgain
     public CanInteractAgain canInteractAgain;
     public Image imageA;
     public Image imageB;
-    public GameObject Clothes;
+    public GameObject Item;
 
     private bool isShowingA = true;
     public float fadeDuration = 1f;
@@ -17,6 +17,7 @@ public class GuysCarpat : MonoBehaviour
     void Start()
     {
         canInteractAgain = FindObjectOfType<CanInteractAgain>();
+        Item.GetComponent<Button>().interactable = false;
     }
     // 當按鈕被點擊
     public void OnClick()
@@ -24,6 +25,7 @@ public class GuysCarpat : MonoBehaviour
         if (canInteractAgain.interactCount == 0)
         {
             StartCoroutine(FadeTransition());
+        
         }
     }
      IEnumerator FadeTransition()
@@ -38,16 +40,19 @@ public class GuysCarpat : MonoBehaviour
             float t = elapsedTime / fadeDuration;
             fadeOutImage.color = new Color(fadeOutImage.color.r, fadeOutImage.color.g, fadeOutImage.color.b, 1 - t);
             fadeInImage.color = new Color(fadeInImage.color.r, fadeInImage.color.g, fadeInImage.color.b, t);
-            if (Clothes != null)
+            if (Item != null)
             {
-                Clothes.SetActive(isShowingA);
-                Clothes.GetComponent<Image>().color = fadeInImage.color;
-                Clothes.GetComponent<Button>().interactable = isShowingA;
+                ItemPickUp(fadeInImage);
             }
             yield return null;
         }
-
-        isShowingA = !isShowingA; // Toggle the flag
         
+        isShowingA = !isShowingA; // Toggle the flag
+    }
+    void ItemPickUp(Image image)
+    {
+        Item.SetActive(isShowingA);
+        Item.GetComponent<Image>().color = image.color;
+        Item.GetComponent<Button>().interactable = isShowingA;
     }
 }
