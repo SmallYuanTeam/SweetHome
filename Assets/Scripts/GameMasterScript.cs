@@ -113,6 +113,7 @@ public enum ParentsRoomItem
 public class GameMasterScript : MonoBehaviour
 {
     public SceneManagerHelper sceneManagerHelper;
+    public GameObject InventoryPanel;
     public SelectedRoom SelectedRoom;
     public GuysRoomItem GuysRoomItem;
     public GuysTableItem GuysTableItem;
@@ -137,8 +138,19 @@ public class GameMasterScript : MonoBehaviour
         sceneManagerHelper = FindObjectOfType<SceneManagerHelper>();
 
         
-        List<string> scenesToLoad = new List<string> {"GuysRoom"};
+        List<string> scenesToLoad = new List<string> {"MainMenu"};
         sceneManagerHelper.LoadSceneWithTransition(scenesToLoad);
+    }
+    public void InventoryPanelActive()
+    {
+        if (InventoryPanel.activeSelf)
+        {
+            InventoryPanel.SetActive(false);
+        }
+        else
+        {
+            InventoryPanel.SetActive(true);
+        }
     }
     
     public void Selection()
@@ -181,11 +193,11 @@ public class GameMasterScript : MonoBehaviour
                     break;
                 case GuysRoomItem.Chair:
                     Debug.Log("You selected the chair");
-                    dayOneDialog.GetRoomItem("Chair");
+                    dayOneDialog.GetRoomItem("GuysRoom","Chair");
                     break;
                 case GuysRoomItem.GarbageCan:
                     Debug.Log("You selected the garbage can");
-                    dayOneDialog.GetRoomItem("GarbageCan");
+                    dayOneDialog.GetRoomItem("GuysRoom","GarbageCan");
                     break;
                 default:
                     Debug.Log("You selected nothing");
@@ -197,7 +209,7 @@ public class GameMasterScript : MonoBehaviour
             switch (GuysTableItem)
             {
                 case GuysTableItem.Light:
-                    Debug.Log("You selected the light");
+                    Debug.Log("You selected the FlashLight");
                     break;
                 case GuysTableItem.Return:
                     Debug.Log("You selected the return");
@@ -270,11 +282,11 @@ public class GameMasterScript : MonoBehaviour
                     break;
                 case GuysBedItem.Puppet:
                     Debug.Log("You selected the puppet");
-                    dayOneDialog.GetRoomItem("Puppet");
+                    dayOneDialog.GetRoomItem("GuysBed","Puppet");
                     break;
                 case GuysBedItem.Bottle:
                     Debug.Log("You selected the Bottle");
-                    dayOneDialog.GetRoomItem("Bottle");
+                    dayOneDialog.GetRoomItem("GuysBed","Bottle");
                     break;
                 case GuysBedItem.Return:
                     Debug.Log("You selected the return");
@@ -350,19 +362,18 @@ public class GameMasterScript : MonoBehaviour
                     break;
                 case FirstFloorItem.ShoeBox:
                     Debug.Log("You selected the shoe box");
-                    //dayOneDialog.GetRoomItem("ShoeBox");
                     break;
                 case FirstFloorItem.RestRoomDoor:
                     Debug.Log("You selected the rest room door");
-                    dayOneDialog.GetRoomItem("RestRoomDoor");
+                    dayOneDialog.GetRoomItem("FirstFloor","RestRoomDoor");
                     break;
                 case FirstFloorItem.GateExit:
                     Debug.Log("You selected the gate exit");
-                    dayOneDialog.GetRoomItem("GateExit");
+                    dayOneDialog.GetRoomItem("FirstFloor","GateExit");
                     break;
                 case FirstFloorItem.Carpet:
                     Debug.Log("You selected the carpet");
-                    dayOneDialog.GetRoomItem("Carpet");
+                    dayOneDialog.GetRoomItem("FirstFloor","Carpet");
                     break;
                 case FirstFloorItem.LivingRoomDoor:
                     Debug.Log("You selected the living room door");
@@ -381,27 +392,27 @@ public class GameMasterScript : MonoBehaviour
             {
                 case LivingRoomItem.TV:
                     Debug.Log("You selected the TV");
-                    dayOneDialog.GetRoomItem("TV");
+                    dayOneDialog.GetRoomItem("LivingRoom","TV");
                     break;
                 case LivingRoomItem.Cabinet:
                     Debug.Log("You selected the cabinet");
-                    dayOneDialog.GetRoomItem("Cabinet");
+                    dayOneDialog.GetRoomItem("LivingRoom","Cabinet");
                     break;
                 case LivingRoomItem.ToyBox:
                     Debug.Log("You selected the toy box");
-                    dayOneDialog.GetRoomItem("ToyBox");
+                    dayOneDialog.GetRoomItem("LivingRoom","ToyBox");
                     break;
                 case LivingRoomItem.TVCabinet:
                     Debug.Log("You selected the TV cabinet");
-                    dayOneDialog.GetRoomItem("TVCabinet");
+                    dayOneDialog.GetRoomItem("LivingRoom","TVCabinet");
                     break;
                 case LivingRoomItem.Table:
                     Debug.Log("You selected the table");
-                    dayOneDialog.GetRoomItem("Table");
+                    dayOneDialog.GetRoomItem("LivingRoom","Table");
                     break;
                 case LivingRoomItem.Sofa:
                     Debug.Log("You selected the sofa");
-                    dayOneDialog.GetRoomItem("Sofa");
+                    dayOneDialog.GetRoomItem("LivingRoom","Sofa");
                     break;
                 case LivingRoomItem.FirstFloorDoor:
                     Debug.Log("You selected the first floor door");
@@ -426,7 +437,7 @@ public class GameMasterScript : MonoBehaviour
                     break;
                 case UtilityRoomItem.Broom:
                     Debug.Log("You selected the broom");
-                    dayOneDialog.GetRoomItem("Broom");
+                    dayOneDialog.GetRoomItem("UtilityRoom","Broom");
                     break;
                 case UtilityRoomItem.TowelRack:
                     Debug.Log("You selected the towel rack");

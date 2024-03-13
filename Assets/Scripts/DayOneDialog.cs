@@ -9,10 +9,14 @@ public class DayOneDialog : MonoBehaviour
 {
     FlowerSystem flowerSys;
     GameMasterScript gameMaster;
+    public bool FirstDialogOn = false;
     private string UserName;
-    private string NPCName;
+    //private string NPCName;
     private bool isDayOne = false;
     private static bool DialogOn = false;
+    private Button DialogButton;
+    private GameObject DialogPanel;
+    private GameObject DialogBackground;
 
     void Start()
     {
@@ -27,16 +31,65 @@ public class DayOneDialog : MonoBehaviour
 
     public void setDialog()
     {
-        flowerSys.SetupDialog();
-        DialogOn = true;
+        if (!FirstDialogOn)
+        {
+            flowerSys.SetupDialog();
+        }
+        else DialogPanel.SetActive(true);
     }
-    public void GetRoomItem(string item)
+    public void removeDialog()
     {
-        if (!DialogOn && gameMaster.SelectedRoom == SelectedRoom.GuysRoom)
+        DialogPanel.SetActive(false);
+        DialogOn = false;
+    }
+    public void GetRoomItem(string Room, string item)
+    {
+        if (!DialogOn)
         {
             setDialog();
-            string resourcePath = $"Dialogues/GuysRoom/{item}";
+            string resourcePath = $"Dialogues/{Room}/{item}";
             flowerSys.ReadTextFromResource(resourcePath);
+            if (FirstDialogOn == false)
+            {
+                FirstDialog();
+                FirstDialogOn = true;
+                DialogBackground.GetComponent<Image>().sprite = Resources.Load<Sprite>($"Sprites/UI/DialogItem/Guys");
+            }
+            
         }
+        else DialogBackground.GetComponent<Image>().sprite = Resources.Load<Sprite>($"Sprites/UI/DialogItem/Guys");
+    }
+    public void GetNPCDialog(string NPC, string eventID)
+    {
+        if (!DialogOn)
+        {
+            setDialog();
+            string resourcePath = $"Dialogues/{NPC}/{eventID}";
+            flowerSys.ReadTextFromResource(resourcePath);
+            if (FirstDialogOn == false)
+            {
+                FirstDialog();
+                FirstDialogOn = true;
+            }
+        }
+        DialogBackground.GetComponent<Image>().sprite = Resources.Load<Sprite>($"Sprites/UI/DialogItem/{NPC}");
+    }
+    void Update()
+    {
+        if(flowerSys.isCompleted && FirstDialogOn)
+        {
+            removeDialog();
+        }
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            flowerSys.Next();
+        }
+    }
+    public void FirstDialog()
+    {
+        DialogButton = GameObject.Find("DialogNext").GetComponent<Button>();
+        DialogPanel = GameObject.Find("DialogPanel");
+        DialogBackground = GameObject.Find("DialogBackground");
+        DialogButton.onClick.AddListener(DialogContinue);
     }
 }
