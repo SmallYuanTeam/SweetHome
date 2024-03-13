@@ -925,6 +925,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01ee6c6c567e2a5408df6178fed4e84e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FirstDialogOn: 0
 --- !u!4 &1571226102
 Transform:
   m_ObjectHideFlags: 0
@@ -952,6 +953,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 780603402, guid: c7ae2f0ce5745b94ab8d1e5d60f5a632, type: 3}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 780603402, guid: c7ae2f0ce5745b94ab8d1e5d60f5a632, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 778f15d27c405084db9009c2d4276945, type: 3}
     - target: {fileID: 8451348113532845596, guid: c7ae2f0ce5745b94ab8d1e5d60f5a632, type: 3}
       propertyPath: m_RootOrder
       value: 5

@@ -99,6 +99,7 @@ public enum UtilityRoomItem
     none,
     Broom,
     TowelRack,
+    VacuumCleaner,
     FirstFloorDoor
 }
 
@@ -441,7 +442,10 @@ public class GameMasterScript : MonoBehaviour
                     break;
                 case UtilityRoomItem.TowelRack:
                     Debug.Log("You selected the towel rack");
-                    //dayOneDialog.GetRoomItem("TowelRack");
+                    break;
+                case UtilityRoomItem.VacuumCleaner:
+                    Debug.Log("You selected the vacuum cleaner");
+                    dayOneDialog.GetRoomItem("UtilityRoom","VacuumCleaner");
                     break;
                 default:
                     Debug.Log("You selected nothing");
