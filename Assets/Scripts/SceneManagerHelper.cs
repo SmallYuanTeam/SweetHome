@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Com.LuisPedroFonseca.ProCamera2D;
+using UnityEngine.UI;
 
 public class SceneManagerHelper : MonoBehaviour
 {
@@ -73,4 +74,5 @@ public class SceneManagerHelper : MonoBehaviour
             loadedScenes.Add(mainSceneName);
         }
     }
+    
 }

@@ -1,14 +1,14 @@
-
 using UnityEngine;
 using UnityEngine.UI;
 using Flower;
 using System.Collections.Generic;
-using JetBrains.Annotations;
+using Com.LuisPedroFonseca.ProCamera2D;
 
 public class Dialog : MonoBehaviour
 {
     FlowerSystem flowerSys;
     GameMasterScript gameMaster;
+    private ProCamera2DTransitionsFX transitionsFX;
     public bool FirstDialogOn = false;
     private string UserName;
     public static bool DialogOn = false;
@@ -16,15 +16,28 @@ public class Dialog : MonoBehaviour
     private GameObject DialogPanel;
     private GameObject DialogBackground;
     public GameObject Background;
+    public SceneManagerHelper sceneManagerHelper;
 
     void Start()
     {
         flowerSys = FlowerManager.Instance.CreateFlowerSystem("Dialog", false);
         gameMaster = GameObject.Find("GameMaster").GetComponent<GameMasterScript>();
+        sceneManagerHelper = FindObjectOfType<SceneManagerHelper>();
         flowerSys.RegisterCommand("ChangeNPC", ChangeNPC);
         flowerSys.RegisterCommand("ChangeBackground", ChangeBackground);
     }
-
+    void Awake()
+    {
+        transitionsFX = ProCamera2DTransitionsFX.Instance;
+    }
+    void _TransitionEnter()
+    {
+        transitionsFX.TransitionEnter();
+    }
+    void _TransitionExit()
+    {
+        transitionsFX.TransitionExit();
+    }
     public void DialogContinue()
     {
         flowerSys.Next();
@@ -87,6 +100,7 @@ public class Dialog : MonoBehaviour
         {
             flowerSys.Next();
         }
+        Background = GameObject.Find("BG");
     }
     public void FirstDialog()
     {
@@ -101,11 +115,16 @@ public class Dialog : MonoBehaviour
         DialogBackground.GetComponent<Image>().sprite = Resources.Load<Sprite>($"Sprites/UI/DialogItem/{_params[0]}");
     }
 
-    private void ChangeBackground(List<string> _params)
+    public void ChangeBackground(List<string> _params)
     {
-        Background = GameObject.Find("BG");
-        TransitionHelper transitionHelper = new TransitionHelper();
-        transitionHelper.BackgroundTransitionCoroutine(_params[0], Background);
+        transitionsFX.DurationExit = 1.0f;
+        transitionsFX.DurationEnter = 1.0f;
+        transitionsFX.TransitionExit();
+        Debug.Log($"ChangeBG: {string.Join(", ", _params[0])}");
+        Background.GetComponent<Image>().sprite = Resources.Load<Sprite>($"Sprites/Story/{_params[0]}");
+        transitionsFX.TransitionEnter();
+        transitionsFX.DurationExit = 0.3f;
+        transitionsFX.DurationEnter = 0.5f;
     }
 
     public bool DialogIsCompleted()

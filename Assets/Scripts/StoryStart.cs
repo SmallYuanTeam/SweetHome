@@ -23,12 +23,12 @@ public class StoryStart : MonoBehaviour
                     progress = 1;
                     break;
                 case 1:
-                    dialog.GetNPCDialog("Doctor", "FirstStory_02");
+                    dialog.GetNPCDialog("Doctor", "FirstStory_00");
                     dialog.setDialog();
                     progress = 2;
                     break;
                 case 2:
-                    dialog.GetNPCDialog("Doctor", "FirstStory_03");
+                    dialog.GetNPCDialog("Doctor", "FirstStory_02");
                     dialog.setDialog();
                     progress = 3;
                     break;
