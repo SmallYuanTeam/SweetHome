@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using ToolBox.Serialization;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -8,6 +9,10 @@ public class Player : MonoBehaviour
     public HashSet<string> obtainedItemIDs = new HashSet<string>();
     public InventoryObject inventory;
     public InventoryUI inventoryUI;
+    public float BGMVolume = 0f;
+    public float SEVolume = 0f;
+    public float MEVolume = 0f;
+    private const string SAVE_KEY = "PlayerSaveData";
 
     private void Awake()
     {
@@ -20,6 +25,17 @@ public class Player : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
         }
+        DataSerializer.FileSaving += FileSaving;
+
+		if (DataSerializer.TryLoad<SaveData>(SAVE_KEY, out var loadedData))
+		{
+			BGMVolume = loadedData.BGMVolume;
+		}
+        
+    }
+    private void FileSaving()
+    {
+        DataSerializer.Save(SAVE_KEY, new SaveData(BGMVolume));
     }
     public void AddItemToInventory(ItemObject item)
     {
@@ -55,6 +71,18 @@ public class Player : MonoBehaviour
     // 遊戲結束時，背包內的物品會被清空
     public void OnApplicationQuit()
     {
+        if (inventory != null)
         inventory.Container.Clear();
+    }
+}
+public struct SaveData
+{
+    [SerializeField] private float _BGMVolume;
+
+    public float BGMVolume => _BGMVolume;
+    
+    public SaveData(float BGMVolume)
+    {
+        _BGMVolume = BGMVolume;
     }
 }

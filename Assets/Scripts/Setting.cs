@@ -1,3 +1,4 @@
+using UnityEditor.UI;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,6 +8,7 @@ public class Setting : MonoBehaviour
     public GameObject mainSettingPanel;
     public GameObject moreSettingsPanel;
     public GameObject volumePanel;
+    public Player player;
     public Slider bgmSlider;
     public Slider seSlider;
     public Slider meSlider;
@@ -22,8 +24,8 @@ public class Setting : MonoBehaviour
         PausePanel.SetActive(false);
         if (bgmSlider != null)
         {
-            LoadBGMVolumeSettings();
-
+            audioManager.SetVolume(LoadBGMVolumeSettings());
+            bgmSlider.value = LoadBGMVolumeSettings();
             // 添加滑條事件監聽
             bgmSlider.onValueChanged.AddListener(OnSliderValueChanged);
         }
@@ -70,13 +72,13 @@ public class Setting : MonoBehaviour
     // 保存音量設定
     public void SaveVolumeSettings(float volume)
     {
-        PlayerPrefs.SetFloat("Volume", volume);
+        player.BGMVolume = volume;
     }
 
     // 加載音量設定
     public float LoadBGMVolumeSettings()
     {
-        return PlayerPrefs.GetFloat("BGMVolume"); // 預設值為 1.0f
+        return player.BGMVolume;
     }
     public void UpdateVolume(float volume)
     {
@@ -91,7 +93,6 @@ public class Setting : MonoBehaviour
             audioManager.SetVolume(value);
         }
 
-        // 保存新的音量值到 PlayerPrefs，以便下次遊戲啟動時能夠記住用戶的設定
-        PlayerPrefs.SetFloat("BGMVolume", value);
+        SaveVolumeSettings(value);
     }
 }

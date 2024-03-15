@@ -27,7 +27,7 @@ public class GuysGarderobe : MonoBehaviour
         
         }
     }
-     IEnumerator FadeTransition()
+    IEnumerator FadeTransition()
     {
         Image fadeOutImage = isShowingA ? imageA : imageB;
         Image fadeInImage = isShowingA ? imageB : imageA;

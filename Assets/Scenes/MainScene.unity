@@ -907,7 +907,7 @@ GameObject:
   - component: {fileID: 1571226102}
   - component: {fileID: 1571226101}
   m_Layer: 0
-  m_Name: DayOneDialog
+  m_Name: Dialog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1050,6 +1050,14 @@ PrefabInstance:
     - target: {fileID: 901884379951983460, guid: 035e9fb1bb9022f47867fee7b3c6ef99, type: 3}
       propertyPath: m_Name
       value: Setting
+      objectReference: {fileID: 0}
+    - target: {fileID: 901884379951983462, guid: 035e9fb1bb9022f47867fee7b3c6ef99, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 655298402}
+    - target: {fileID: 901884379951983462, guid: 035e9fb1bb9022f47867fee7b3c6ef99, type: 3}
+      propertyPath: players
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 901884379951983462, guid: 035e9fb1bb9022f47867fee7b3c6ef99, type: 3}
       propertyPath: audioManager

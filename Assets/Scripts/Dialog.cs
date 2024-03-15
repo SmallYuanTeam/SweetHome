@@ -1,27 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.UI;
 using Flower;
-using UnityEngine.SceneManagement;
+using System.Collections.Generic;
+using JetBrains.Annotations;
 
-public class DayOneDialog : MonoBehaviour
+public class Dialog : MonoBehaviour
 {
     FlowerSystem flowerSys;
     GameMasterScript gameMaster;
     public bool FirstDialogOn = false;
     private string UserName;
-    //private string NPCName;
-    private bool isDayOne = false;
-    private static bool DialogOn = false;
+    public static bool DialogOn = false;
     private Button DialogButton;
     private GameObject DialogPanel;
     private GameObject DialogBackground;
+    public GameObject Background;
 
     void Start()
     {
-        flowerSys = FlowerManager.Instance.CreateFlowerSystem("DayOneDialog", false);
+        flowerSys = FlowerManager.Instance.CreateFlowerSystem("Dialog", false);
         gameMaster = GameObject.Find("GameMaster").GetComponent<GameMasterScript>();
+        flowerSys.RegisterCommand("ChangeNPC", ChangeNPC);
+        flowerSys.RegisterCommand("ChangeBackground", ChangeBackground);
     }
 
     public void DialogContinue()
@@ -34,6 +35,7 @@ public class DayOneDialog : MonoBehaviour
         if (!FirstDialogOn)
         {
             flowerSys.SetupDialog();
+            
         }
         else DialogPanel.SetActive(true);
     }
@@ -64,7 +66,7 @@ public class DayOneDialog : MonoBehaviour
         if (!DialogOn)
         {
             setDialog();
-            string resourcePath = $"Dialogues/{NPC}/{eventID}";
+            string resourcePath = $"Dialogues/Dialogues/{NPC}/{eventID}";
             flowerSys.ReadTextFromResource(resourcePath);
             if (FirstDialogOn == false)
             {
@@ -74,6 +76,7 @@ public class DayOneDialog : MonoBehaviour
         }
         DialogBackground.GetComponent<Image>().sprite = Resources.Load<Sprite>($"Sprites/UI/DialogItem/{NPC}");
     }
+
     void Update()
     {
         if(flowerSys.isCompleted && FirstDialogOn)
@@ -91,5 +94,22 @@ public class DayOneDialog : MonoBehaviour
         DialogPanel = GameObject.Find("DialogPanel");
         DialogBackground = GameObject.Find("DialogBackground");
         DialogButton.onClick.AddListener(DialogContinue);
+    }
+    private void ChangeNPC(List<string> _params)
+    {
+        Debug.Log($"ChangeNPC: {string.Join(", ", _params)}");
+        DialogBackground.GetComponent<Image>().sprite = Resources.Load<Sprite>($"Sprites/UI/DialogItem/{_params[0]}");
+    }
+
+    private void ChangeBackground(List<string> _params)
+    {
+        Background = GameObject.Find("BG");
+        TransitionHelper transitionHelper = new TransitionHelper();
+        transitionHelper.BackgroundTransitionCoroutine(_params[0], Background);
+    }
+
+    public bool DialogIsCompleted()
+    {
+        return flowerSys.isCompleted;
     }
 }
