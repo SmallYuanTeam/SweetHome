@@ -926,6 +926,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FirstDialogOn: 0
+  Background: {fileID: 0}
+  sceneManagerHelper: {fileID: 0}
 --- !u!4 &1571226102
 Transform:
   m_ObjectHideFlags: 0
