@@ -18,6 +18,7 @@ public class Dialog : MonoBehaviour
     private GameObject DialogPanel;
     private GameObject DialogBackground;
     public GameObject Background;
+    public GameObject DialogCharacter;
     public SceneManagerHelper sceneManagerHelper;
 
     void Start()
@@ -76,10 +77,17 @@ public class Dialog : MonoBehaviour
                 FirstDialog();
                 FirstDialogOn = true;
                 DialogBackground.GetComponent<Image>().sprite = Resources.Load<Sprite>($"Sprites/UI/DialogItem/Guys");
+                DialogCharacter.GetComponent<Image>().sprite = Resources.Load<Sprite>($"Sprites/Story/Guys");
             }
             
         }
-        else DialogBackground.GetComponent<Image>().sprite = Resources.Load<Sprite>($"Sprites/UI/DialogItem/Guys");
+        else 
+        {
+            DialogBackground.GetComponent<Image>().sprite = Resources.Load<Sprite>($"Sprites/UI/DialogItem/Guys");
+            DialogCharacter.GetComponent<Image>().sprite = Resources.Load<Sprite>($"Sprites/Story/Guys");
+        }
+        
+
     }
     public void GetNPCDialog(string NPC, string eventID)
     {
@@ -95,6 +103,7 @@ public class Dialog : MonoBehaviour
             }
         }
         DialogBackground.GetComponent<Image>().sprite = Resources.Load<Sprite>($"Sprites/UI/DialogItem/{NPC}");
+        DialogCharacter.GetComponent<Image>().sprite = Resources.Load<Sprite>($"Sprites/Story/{NPC}");
     }
 
     void Update()
@@ -117,6 +126,7 @@ public class Dialog : MonoBehaviour
         DialogSkip = GameObject.Find("DialogSkip").GetComponent<Button>();
         DialogPanel = GameObject.Find("DialogPanel");
         DialogBackground = GameObject.Find("DialogBackground");
+        DialogCharacter = GameObject.Find("DialogCharacter");
         DialogButton.onClick.AddListener(DialogContinue);
         DialogSkip.onClick.AddListener(DialogSkips);
     }
@@ -124,6 +134,7 @@ public class Dialog : MonoBehaviour
     {
         Debug.Log($"ChangeNPC: {string.Join(", ", _params)}");
         DialogBackground.GetComponent<Image>().sprite = Resources.Load<Sprite>($"Sprites/UI/DialogItem/{_params[0]}");
+        DialogCharacter.GetComponent<Image>().sprite = Resources.Load<Sprite>($"Sprites/Story/{_params[0]}");
     }
 
     public void ChangeBackground(List<string> _params)

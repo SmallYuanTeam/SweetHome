@@ -134,7 +134,6 @@ public class GameMasterScript : MonoBehaviour
     public FirstFloorItem FirstFloorItem;
     public LivingRoomItem LivingRoomItem;
     public LivingRoom_SofaItem LivingRoom_SofaItem;
-    public Pillow Pillow;
     public UtilityRoomItem UtilityRoomItem;
 
     Dialog Dialog;
@@ -449,7 +448,6 @@ public class GameMasterScript : MonoBehaviour
                     break;
                 case LivingRoom_SofaItem.Pillow:
                     Debug.Log("You selected the pillow");
-                    Pillow.OnPillowClick();
                     break;
                 case LivingRoom_SofaItem.Key:
                     Debug.Log("You selected the key");
