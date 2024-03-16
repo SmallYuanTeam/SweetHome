@@ -14,6 +14,7 @@ public enum SelectedRoom
     ParentsRoom,    // 父母房間
     FirstFloor,     // 一樓
     LivingRoom,     // 客廳
+    LivingRoom_Sofa, // 客廳沙發
     UtilityRoom,    // 雜物間
     GuestRoom,      // 客房
     BookRoom,       // 書房
@@ -94,6 +95,14 @@ public enum LivingRoomItem
     Sofa,
     FirstFloorDoor
 }
+public enum LivingRoom_SofaItem
+{
+    none,
+    Sofa,
+    Pillow,
+    Key,
+    Return
+}
 public enum UtilityRoomItem
 {
     none,
@@ -124,6 +133,8 @@ public class GameMasterScript : MonoBehaviour
     public SecondFloorItem SecondFloorItem;
     public FirstFloorItem FirstFloorItem;
     public LivingRoomItem LivingRoomItem;
+    public LivingRoom_SofaItem LivingRoom_SofaItem;
+    public Pillow Pillow;
     public UtilityRoomItem UtilityRoomItem;
 
     Dialog Dialog;
@@ -164,19 +175,19 @@ public class GameMasterScript : MonoBehaviour
             {
                 case GuysRoomItem.Table:
                     Debug.Log("You selected the table");
-                    List<string> GuysTableScene = new List<string> {"GuysTable"};
+                    List<string> GuysTableScene = new List<string> {"GuysRoom_Table"};
                     sceneManagerHelper.LoadSceneWithTransition(GuysTableScene);
                     SelectedRoom = SelectedRoom.GuysTable;
                     break;
                 case GuysRoomItem.Garderobe:
                     Debug.Log("You selected the Garderobe");
-                    List<string> GuysGarderobeScene = new List<string> {"GuysGarderobe"};
+                    List<string> GuysGarderobeScene = new List<string> {"GuysRoom_Garderobe"};
                     sceneManagerHelper.LoadSceneWithTransition(GuysGarderobeScene);
                     SelectedRoom = SelectedRoom.GuysGarderobe;
                     break;
                 case GuysRoomItem.Bed:
                     Debug.Log("You selected the bed");
-                    List<string> GuysBedScene = new List<string> {"GuysBed"};
+                    List<string> GuysBedScene = new List<string> {"GuysRoom_Bed"};
                     sceneManagerHelper.LoadSceneWithTransition(GuysBedScene);
                     SelectedRoom = SelectedRoom.GuysBed;
                     break;
@@ -188,7 +199,7 @@ public class GameMasterScript : MonoBehaviour
                     break;
                 case GuysRoomItem.Carpet:
                     Debug.Log("You selected the carpet");
-                    List<string> GuysCarpetScene = new List<string> {"GuysCarpet"};
+                    List<string> GuysCarpetScene = new List<string> {"GuysRoom_Carpet"};
                     sceneManagerHelper.LoadSceneWithTransition(GuysCarpetScene);
                     SelectedRoom = SelectedRoom.GuysCarpet;
                     break;
@@ -413,13 +424,42 @@ public class GameMasterScript : MonoBehaviour
                     break;
                 case LivingRoomItem.Sofa:
                     Debug.Log("You selected the sofa");
-                    Dialog.GetRoomItem("LivingRoom","Sofa");
+                    List<string> LivingRoom_SofaScenes = new List<string> {"LivingRoom_Sofa"};
+                    sceneManagerHelper.LoadSceneWithTransition(LivingRoom_SofaScenes);
+                    SelectedRoom = SelectedRoom.LivingRoom_Sofa;
                     break;
                 case LivingRoomItem.FirstFloorDoor:
                     Debug.Log("You selected the first floor door");
                     List<string> FirstFloorScenes = new List<string> {"FirstFloor"};
                     sceneManagerHelper.LoadSceneWithTransition(FirstFloorScenes);
                     SelectedRoom = SelectedRoom.FirstFloor;
+                    break;
+                default:
+                    Debug.Log("You selected nothing");
+                    break;
+            }
+        }
+        else if (SelectedRoom == SelectedRoom.LivingRoom_Sofa)
+        {
+            switch (LivingRoom_SofaItem)
+            {
+                case LivingRoom_SofaItem.Sofa:
+                    Debug.Log("You selected the sofa");
+                    Dialog.GetRoomItem("LivingRoom_Sofa","Sofa");
+                    break;
+                case LivingRoom_SofaItem.Pillow:
+                    Debug.Log("You selected the pillow");
+                    Pillow.OnPillowClick();
+                    break;
+                case LivingRoom_SofaItem.Key:
+                    Debug.Log("You selected the key");
+                    Dialog.GetRoomItem("LivingRoom_Sofa","Key");
+                    break;
+                case LivingRoom_SofaItem.Return:
+                    Debug.Log("You selected the return");
+                    List<string> LivingRoomScenes = new List<string> {"LivingRoom"};
+                    sceneManagerHelper.LoadSceneWithTransition(LivingRoomScenes);
+                    SelectedRoom = SelectedRoom.LivingRoom;
                     break;
                 default:
                     Debug.Log("You selected nothing");

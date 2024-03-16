@@ -62,6 +62,11 @@ public class ButtonInteractable : MonoBehaviour
             GameMaster.GetComponent<GameMasterScript>().LivingRoomItem = (LivingRoomItem)Enum.Parse(typeof(LivingRoomItem), buttonName);
             GameMaster.GetComponent<GameMasterScript>().Selection();
         }
+        else if (GameMaster.GetComponent<GameMasterScript>().SelectedRoom == SelectedRoom.LivingRoom_Sofa)
+        {
+            GameMaster.GetComponent<GameMasterScript>().LivingRoom_SofaItem = (LivingRoom_SofaItem)Enum.Parse(typeof(LivingRoom_SofaItem), buttonName);
+            GameMaster.GetComponent<GameMasterScript>().Selection();
+        }
         // UtilityRoom
         else if (GameMaster.GetComponent<GameMasterScript>().SelectedRoom == SelectedRoom.UtilityRoom)
         {

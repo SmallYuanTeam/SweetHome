@@ -12,7 +12,9 @@ public class Dialog : MonoBehaviour
     public bool FirstDialogOn = false;
     private string UserName;
     public static bool DialogOn = false;
+    public static bool DialogSkipOn = false;
     private Button DialogButton;
+    private Button DialogSkip;
     private GameObject DialogPanel;
     private GameObject DialogBackground;
     public GameObject Background;
@@ -57,6 +59,11 @@ public class Dialog : MonoBehaviour
         DialogPanel.SetActive(false);
         DialogOn = false;
     }
+    public void DialogSkips()
+    {
+        DialogSkipOn = true;
+        flowerSys.textSpeed = 0.01f;
+    }
     public void GetRoomItem(string Room, string item)
     {
         if (!DialogOn)
@@ -95,8 +102,10 @@ public class Dialog : MonoBehaviour
         if(flowerSys.isCompleted && FirstDialogOn)
         {
             removeDialog();
+            DialogSkipOn = false;
+            flowerSys.textSpeed = 0.1f;
         }
-        if(Input.GetKeyDown(KeyCode.Space))
+        if (DialogSkipOn)
         {
             flowerSys.Next();
         }
@@ -105,9 +114,11 @@ public class Dialog : MonoBehaviour
     public void FirstDialog()
     {
         DialogButton = GameObject.Find("DialogNext").GetComponent<Button>();
+        DialogSkip = GameObject.Find("DialogSkip").GetComponent<Button>();
         DialogPanel = GameObject.Find("DialogPanel");
         DialogBackground = GameObject.Find("DialogBackground");
         DialogButton.onClick.AddListener(DialogContinue);
+        DialogSkip.onClick.AddListener(DialogSkips);
     }
     private void ChangeNPC(List<string> _params)
     {
