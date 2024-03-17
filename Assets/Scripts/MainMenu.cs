@@ -16,7 +16,6 @@ public class MainMenu : MonoBehaviour
     public void StartGame()
     {
         List<string> scenesToLoad = new List<string> {"StoryStart"};
-        //gameMasterScript.InventoryPanelActive();
         sceneManagerHelper.LoadSceneWithTransition(scenesToLoad);
     }
 }
