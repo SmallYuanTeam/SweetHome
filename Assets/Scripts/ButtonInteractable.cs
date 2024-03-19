@@ -62,9 +62,29 @@ public class ButtonInteractable : MonoBehaviour
             GameMaster.GetComponent<GameMasterScript>().LivingRoomItem = (LivingRoomItem)Enum.Parse(typeof(LivingRoomItem), buttonName);
             GameMaster.GetComponent<GameMasterScript>().Selection();
         }
+        else if (GameMaster.GetComponent<GameMasterScript>().SelectedRoom == SelectedRoom.LivingRoom_Safe)
+        {
+            GameMaster.GetComponent<GameMasterScript>().LivingRoom_SafeItem = (LivingRoom_SafeItem)Enum.Parse(typeof(LivingRoom_SafeItem), buttonName);
+            GameMaster.GetComponent<GameMasterScript>().Selection();
+        }
         else if (GameMaster.GetComponent<GameMasterScript>().SelectedRoom == SelectedRoom.LivingRoom_Sofa)
         {
             GameMaster.GetComponent<GameMasterScript>().LivingRoom_SofaItem = (LivingRoom_SofaItem)Enum.Parse(typeof(LivingRoom_SofaItem), buttonName);
+            GameMaster.GetComponent<GameMasterScript>().Selection();
+        }
+        else if (GameMaster.GetComponent<GameMasterScript>().SelectedRoom == SelectedRoom.LivingRoom_Table)
+        {
+            GameMaster.GetComponent<GameMasterScript>().LivingRoom_TableItem = (LivingRoom_TableItem)Enum.Parse(typeof(LivingRoom_TableItem), buttonName);
+            GameMaster.GetComponent<GameMasterScript>().Selection();
+        }
+        else if (GameMaster.GetComponent<GameMasterScript>().SelectedRoom == SelectedRoom.LivingRoom_TVCabinet)
+        {
+            GameMaster.GetComponent<GameMasterScript>().LivingRoom_TVCabinetItem = (LivingRoom_TVCabinetItem)Enum.Parse(typeof(LivingRoom_TVCabinetItem), buttonName);
+            GameMaster.GetComponent<GameMasterScript>().Selection();
+        }
+        else if (GameMaster.GetComponent<GameMasterScript>().SelectedRoom == SelectedRoom.LivingRoom_TVDrawer)
+        {
+            GameMaster.GetComponent<GameMasterScript>().LivingRoom_TVDrawerItem = (LivingRoom_TVDrawerItem)Enum.Parse(typeof(LivingRoom_TVDrawerItem), buttonName);
             GameMaster.GetComponent<GameMasterScript>().Selection();
         }
         // UtilityRoom

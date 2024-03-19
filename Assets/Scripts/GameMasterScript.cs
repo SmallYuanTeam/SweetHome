@@ -14,8 +14,11 @@ public enum SelectedRoom
     ParentsRoom,    // 父母房間
     FirstFloor,     // 一樓
     LivingRoom,     // 客廳
+    LivingRoom_Safe, // 客廳保險箱
     LivingRoom_Sofa, // 客廳沙發
     LivingRoom_Table, // 客廳桌子
+    LivingRoom_TVCabinet, // 客廳電視櫃
+    LivingRoom_TVDrawer, // 客廳電視櫃抽屜
     UtilityRoom,    // 雜物間
     GuestRoom,      // 客房
     BookRoom,       // 書房
@@ -96,6 +99,12 @@ public enum LivingRoomItem
     Sofa,
     FirstFloorDoor
 }
+public enum LivingRoom_SafeItem
+{
+    none,
+    Safe,
+    Return
+}
 public enum LivingRoom_SofaItem
 {
     none,
@@ -109,6 +118,16 @@ public enum LivingRoom_TableItem
     none,
     PenHolder,
     Battory,
+    Return
+}
+public enum LivingRoom_TVCabinetItem
+{
+    none,
+    Return
+}
+public enum LivingRoom_TVDrawerItem
+{
+    none,
     Return
 }
 public enum UtilityRoomItem
@@ -141,8 +160,11 @@ public class GameMasterScript : MonoBehaviour
     public SecondFloorItem SecondFloorItem;
     public FirstFloorItem FirstFloorItem;
     public LivingRoomItem LivingRoomItem;
+    public LivingRoom_SafeItem LivingRoom_SafeItem;
     public LivingRoom_SofaItem LivingRoom_SofaItem;
     public LivingRoom_TableItem LivingRoom_TableItem;
+    public LivingRoom_TVCabinetItem LivingRoom_TVCabinetItem;
+    public LivingRoom_TVDrawerItem LivingRoom_TVDrawerItem;
     public UtilityRoomItem UtilityRoomItem;
 
     Dialog Dialog;
@@ -449,6 +471,25 @@ public class GameMasterScript : MonoBehaviour
                     break;
             }
         }
+        else if (SelectedRoom == SelectedRoom.LivingRoom_Safe)
+        {
+            switch (LivingRoom_SafeItem)
+            {
+                case LivingRoom_SafeItem.Safe:
+                    Debug.Log("You selected the safe");
+                    Dialog.GetRoomItem("LivingRoom_Safe","Safe");
+                    break;
+                case LivingRoom_SafeItem.Return:
+                    Debug.Log("You selected the return");
+                    List<string> LivingRoomScenes = new List<string> {"LivingRoom"};
+                    sceneManagerHelper.LoadSceneWithTransition(LivingRoomScenes);
+                    SelectedRoom = SelectedRoom.LivingRoom;
+                    break;
+                default:
+                    Debug.Log("You selected nothing");
+                    break;
+            }
+        }
         else if (SelectedRoom == SelectedRoom.LivingRoom_Sofa)
         {
             switch (LivingRoom_SofaItem)
@@ -486,6 +527,36 @@ public class GameMasterScript : MonoBehaviour
                     Debug.Log("You selected the battory");
                     break;
                 case LivingRoom_TableItem.Return:
+                    Debug.Log("You selected the return");
+                    List<string> LivingRoomScenes = new List<string> {"LivingRoom"};
+                    sceneManagerHelper.LoadSceneWithTransition(LivingRoomScenes);
+                    SelectedRoom = SelectedRoom.LivingRoom;
+                    break;
+                default:
+                    Debug.Log("You selected nothing");
+                    break;
+            }
+        }
+        else if (SelectedRoom == SelectedRoom.LivingRoom_TVCabinet)
+        {
+            switch (LivingRoom_TVCabinetItem)
+            {
+                case LivingRoom_TVCabinetItem.Return:
+                    Debug.Log("You selected the return");
+                    List<string> LivingRoomScenes = new List<string> {"LivingRoom"};
+                    sceneManagerHelper.LoadSceneWithTransition(LivingRoomScenes);
+                    SelectedRoom = SelectedRoom.LivingRoom;
+                    break;
+                default:
+                    Debug.Log("You selected nothing");
+                    break;
+            }
+        }
+        else if (SelectedRoom == SelectedRoom.LivingRoom_TVDrawer)
+        {
+            switch (LivingRoom_TVDrawerItem)
+            {
+                case LivingRoom_TVDrawerItem.Return:
                     Debug.Log("You selected the return");
                     List<string> LivingRoomScenes = new List<string> {"LivingRoom"};
                     sceneManagerHelper.LoadSceneWithTransition(LivingRoomScenes);
