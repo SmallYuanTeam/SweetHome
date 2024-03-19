@@ -42,6 +42,18 @@ EditorBuildSettings:
     path: Assets/Scenes/LivingRoom_Sofa.unity
     guid: 0678edcdf7c33ec4c80384f97c3a566e
   - enabled: 1
+    path: Assets/Scenes/LivingRoom_Safe.unity
+    guid: fe3743143161e074b98f17cf58ab1b2b
+  - enabled: 1
+    path: Assets/Scenes/LivingRoom_Table.unity
+    guid: b15c534de8eb8c8488bdb60089fbc8f6
+  - enabled: 1
+    path: Assets/Scenes/LivingRoom_TVCabinet.unity
+    guid: f22dfa020a757b74d91b96e5834c6ac6
+  - enabled: 1
+    path: Assets/Scenes/LivingRoom_TVDrawer.unity
+    guid: 70ce7ff11e2a5524986063d48c975247
+  - enabled: 1
     path: Assets/Scenes/UtilityRoom.unity
     guid: 50b2cfae6af95f64a9ae51cd47f303c4
   m_configObjects: {}

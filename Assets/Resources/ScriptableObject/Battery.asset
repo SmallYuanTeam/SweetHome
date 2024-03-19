@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 24662dd36e5bd4746b808bc371222b24, type: 3}
-  m_Name: Bettery
+  m_Name: Battery
   m_EditorClassIdentifier: 
   itemID: Bettery
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 47a37311fce2d8b4a9c2a43eed96424e, type: 3}
   type: 2
   description: "\u5C31\u662F\u500B\u96FB\u6C60"
