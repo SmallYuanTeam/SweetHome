@@ -185,14 +185,11 @@ public class GameMasterScript : MonoBehaviour
     }
     public void InventoryPanelActive()
     {
-        if (InventoryPanel.activeSelf)
-        {
-            InventoryPanel.SetActive(false);
-        }
-        else
-        {
             InventoryPanel.SetActive(true);
-        }
+    }
+    public void InventoryPanelDeactive()
+    {
+        InventoryPanel.SetActive(false);
     }
     
     public void Selection()

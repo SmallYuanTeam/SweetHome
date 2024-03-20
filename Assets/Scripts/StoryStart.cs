@@ -47,10 +47,9 @@ public class StoryStart : MonoBehaviour
                     Dialog.DialogSkipOn = false;
                     break;
                 case 2:
-                    //yield return StartCoroutine(dialog.ChangeBackgroundForScripts("firstfloot_light", 2.0f, 2.0f));
-                    //yield return StartCoroutine(dialog.ChangeBackgroundForScripts("secondfloot_light", 3.0f, 4.0f));
-                    //yield return StartCoroutine(dialog.ChangeBackgroundForScripts("BookRoom_light", 5.0f, 6.0f));
-                    yield return null; 
+                    yield return StartCoroutine(dialog.ChangeBackgroundForScripts("firstfloot_light", 2.0f, 2.0f));
+                    yield return StartCoroutine(dialog.ChangeBackgroundForScripts("secondfloot_light", 3.0f, 4.0f));
+                    yield return StartCoroutine(dialog.ChangeBackgroundForScripts("BookRoom_light", 5.0f, 6.0f));
                     dialog.GetDialog("FirstStory", "FirstStory_02");
                     dialog.setDialog();
                     progress = 3;

@@ -4,6 +4,7 @@ using Flower;
 using System.Collections.Generic;
 using Com.LuisPedroFonseca.ProCamera2D;
 using System.Collections;
+using System;
 
 public class Dialog : MonoBehaviour
 {
@@ -47,7 +48,7 @@ public class Dialog : MonoBehaviour
         flowerSys.Next();
     }
 
-    public void setDialog()
+    public void setDialog(Action callback = null)
     {
         if (!FirstDialogOn)
         {
@@ -55,6 +56,7 @@ public class Dialog : MonoBehaviour
             
         }
         else DialogPanel.SetActive(true);
+        callback?.Invoke();
     }
     public void removeDialog()
     {
@@ -111,7 +113,7 @@ public class Dialog : MonoBehaviour
         {
             removeDialog();
             DialogSkipOn = false;
-            flowerSys.textSpeed = 0.1f;
+            flowerSys.textSpeed = 0.01f;
         }
         if (DialogSkipOn)
         {
@@ -161,6 +163,7 @@ public class Dialog : MonoBehaviour
         yield return new WaitForSeconds(DurationEnter);
         
         ResetTransition();
+        //flowerSys
     }
     public void ResetTransition()
     {

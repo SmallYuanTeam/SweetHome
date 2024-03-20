@@ -429,6 +429,7 @@ GameObject:
   - component: {fileID: 1243491512}
   - component: {fileID: 1243491511}
   - component: {fileID: 1243491510}
+  - component: {fileID: 1243491514}
   m_Layer: 5
   m_Name: Battery
   m_TagString: Untagged
@@ -545,7 +546,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1243491511}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1243491514}
+        m_TargetAssemblyTypeName: Battery, Assembly-CSharp
+        m_MethodName: BatteryPickUp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!222 &1243491513
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -554,6 +567,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1243491508}
   m_CullTransparentMesh: 1
+--- !u!114 &1243491514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1243491508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f35d21a9a88fbb439c136dc4e0c03bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneManagerHelper: {fileID: 0}
+  dialog: {fileID: 0}
+  gameMasterScript: {fileID: 0}
 --- !u!1 &1338208130
 GameObject:
   m_ObjectHideFlags: 0
