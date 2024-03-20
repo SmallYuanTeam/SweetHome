@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using Flower;
 using System.Collections.Generic;
 using Com.LuisPedroFonseca.ProCamera2D;
+using System.Collections;
 
 public class Dialog : MonoBehaviour
 {
@@ -89,12 +90,12 @@ public class Dialog : MonoBehaviour
         
 
     }
-    public void GetNPCDialog(string NPC, string eventID)
+    public void GetDialog(string ID, string eventID)
     {
         if (!DialogOn)
         {
             setDialog();
-            string resourcePath = $"Dialogues/Dialogues/{NPC}/{eventID}";
+            string resourcePath = $"Dialogues/Dialogues/{ID}/{eventID}";
             flowerSys.ReadTextFromResource(resourcePath);
             if (FirstDialogOn == false)
             {
@@ -102,8 +103,6 @@ public class Dialog : MonoBehaviour
                 FirstDialogOn = true;
             }
         }
-        DialogBackground.GetComponent<Image>().sprite = Resources.Load<Sprite>($"Sprites/UI/DialogItem/{NPC}");
-        DialogCharacter.GetComponent<Image>().sprite = Resources.Load<Sprite>($"Sprites/Story/{NPC}");
     }
 
     void Update()
@@ -145,10 +144,29 @@ public class Dialog : MonoBehaviour
         Debug.Log($"ChangeBG: {string.Join(", ", _params[0])}");
         Background.GetComponent<Image>().sprite = Resources.Load<Sprite>($"Sprites/Story/{_params[0]}");
         transitionsFX.TransitionEnter();
+        ResetTransition();
+    }
+    public IEnumerator ChangeBackgroundForScripts(string Background, float DurationExit, float DurationEnter)
+    {
+        transitionsFX.DurationExit = DurationExit;
+        transitionsFX.DurationEnter = DurationEnter;
+
+        transitionsFX.TransitionExit();
+        yield return new WaitForSeconds(DurationExit);
+
+        Debug.Log($"ChangeBG: {string.Join(", ", Background)}");
+        this.Background.GetComponent<Image>().sprite = Resources.Load<Sprite>($"Sprites/Story/{Background}");
+        
+        transitionsFX.TransitionEnter();
+        yield return new WaitForSeconds(DurationEnter);
+        
+        ResetTransition();
+    }
+    public void ResetTransition()
+    {
         transitionsFX.DurationExit = 0.3f;
         transitionsFX.DurationEnter = 0.5f;
     }
-
     public bool DialogIsCompleted()
     {
         return flowerSys.isCompleted;
