@@ -42,7 +42,7 @@ public class QTESequenceController : MonoBehaviour
                     
                     Debug.Log("QTE Sequence Completed Successfully!");
                     isSequenceActive = false;
-
+                    StartCoroutine(WaitAndStartNewSequence(timeBetweenSequences));
                     
                 }
             }
@@ -81,7 +81,11 @@ public class QTESequenceController : MonoBehaviour
 
         Debug.Log("New QTE Sequence Started: " + string.Join(", ", currentSequence));
     }
-
+    public void SetUpQTESetting(int sequenceLength, float timeBetweenSequences)
+    {
+        this.sequenceLength = sequenceLength;
+        this.timeBetweenSequences = timeBetweenSequences;
+    }
     KeyCode GetRandomKeyCode()
     {
         List<KeyCode> keys = new List<KeyCode>(keyCodeToResourcePath.Keys);
