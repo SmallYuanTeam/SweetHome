@@ -164,7 +164,11 @@ MonoBehaviour:
   SecondFloorItem: 0
   FirstFloorItem: 0
   LivingRoomItem: 0
+  LivingRoom_SafeItem: 0
   LivingRoom_SofaItem: 0
+  LivingRoom_TableItem: 0
+  LivingRoom_TVCabinetItem: 0
+  LivingRoom_TVDrawerItem: 0
   UtilityRoomItem: 0
 --- !u!4 &124984191
 Transform:
@@ -1182,9 +1186,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 655298402}
     - target: {fileID: 901884379951983462, guid: 035e9fb1bb9022f47867fee7b3c6ef99, type: 3}
+      propertyPath: inventoryUI
+      value: 
+      objectReference: {fileID: 1281221033}
+    - target: {fileID: 901884379951983462, guid: 035e9fb1bb9022f47867fee7b3c6ef99, type: 3}
       propertyPath: audioManager
       value: 
       objectReference: {fileID: 780603401}
+    - target: {fileID: 901884379951983462, guid: 035e9fb1bb9022f47867fee7b3c6ef99, type: 3}
+      propertyPath: gameMasterScript
+      value: 
+      objectReference: {fileID: 124984190}
+    - target: {fileID: 901884379951983462, guid: 035e9fb1bb9022f47867fee7b3c6ef99, type: 3}
+      propertyPath: highlightController
+      value: 
+      objectReference: {fileID: 932169160}
     - target: {fileID: 901884379951983463, guid: 035e9fb1bb9022f47867fee7b3c6ef99, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
