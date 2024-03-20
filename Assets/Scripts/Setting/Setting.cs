@@ -9,6 +9,8 @@ public class Setting : MonoBehaviour
     public SceneManagerHelper sceneManagerHelper;
     public AudioManager audioManager;
     public HighlightController highlightController;
+    public InventoryUI inventoryUI;
+    public GameMasterScript gameMasterScript;
     public GameObject mainSettingPanel;
     public GameObject moreSettingsPanel;
     public GameObject volumePanel;
@@ -23,6 +25,7 @@ public class Setting : MonoBehaviour
     void Start()
     {
         sceneManagerHelper = FindObjectOfType<SceneManagerHelper>();
+
         mainSettingPanel.SetActive(false);
         moreSettingsPanel.SetActive(false);
         volumePanel.SetActive(false);
@@ -88,6 +91,8 @@ public class Setting : MonoBehaviour
     public void CloseGame()
     {
         List<string> MainMenuToLoad = new List<string> {"MainMenu"};
+        gameMasterScript.InventoryPanelActive();
+        player.ReturnToMainMenu();
         sceneManagerHelper.LoadSceneWithTransition(MainMenuToLoad);
         ReturnToGame();
     }

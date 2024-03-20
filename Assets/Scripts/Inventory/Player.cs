@@ -67,7 +67,12 @@ public class Player : MonoBehaviour
         }
         return true; // 所有 ID 都已被获取过，返回 true
     }
-
+    public void ReturnToMainMenu()
+    {
+        inventory.Container.Clear();
+        obtainedItemIDs.Clear();
+        inventoryUI.UpdateInventoryUI();
+    }
     // 遊戲結束時，背包內的物品會被清空
     public void OnApplicationQuit()
     {
