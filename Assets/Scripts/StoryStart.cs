@@ -48,14 +48,54 @@ public class StoryStart : MonoBehaviour
                     break;
                 case 2:
                     yield return StartCoroutine(dialog.ChangeBackgroundForScripts("firstfloot_light", 2.0f, 2.0f));
-                    yield return StartCoroutine(dialog.ChangeBackgroundForScripts("secondfloot_light", 3.0f, 4.0f));
-                    yield return StartCoroutine(dialog.ChangeBackgroundForScripts("BookRoom_light", 5.0f, 6.0f));
+                    yield return StartCoroutine(dialog.ChangeBackgroundForScripts("secondfloot_light", 2.0f, 2.0f));
+                    yield return StartCoroutine(dialog.ChangeBackgroundForScripts("BookRoom_light", 2.0f, 2.0f));
                     dialog.GetDialog("FirstStory", "FirstStory_02");
                     dialog.setDialog();
                     progress = 3;
                     Dialog.DialogSkipOn = false;
                     break;
                 case 3:
+                    yield return StartCoroutine(dialog.ChangeBackgroundForScripts("GuysRoom", 2.0f, 2.0f));
+                    dialog.GetDialog("FirstStory", "FirstStory_03");
+                    dialog.setDialog();
+                    progress = 4;
+                    Dialog.DialogSkipOn = false;
+                    break;
+                case 4:
+                    dialog.GetDialog("FirstStory", "FirstStory_04");
+                    dialog.setDialog();
+                    progress = 5;
+                    Dialog.DialogSkipOn = false;
+                    break;
+                case 5:
+                    yield return StartCoroutine(dialog.ChangeBackgroundForScripts("GuysRoom", 2.0f, 2.0f));
+                    dialog.GetDialog("FirstStory", "FirstStory_05");
+                    dialog.setDialog();
+                    progress = 6;
+                    Dialog.DialogSkipOn = false;
+                    break;
+                case 6:
+                    dialog.GetDialog("FirstStory", "FirstStory_06");
+                    dialog.setDialog();
+                    progress = 7;
+                    Dialog.DialogSkipOn = false;
+                    break;
+                case 7:
+                    dialog.GetDialog("FirstStory", "FirstStory_07");
+                    dialog.setDialog();
+                    progress = 8;
+                    Dialog.DialogSkipOn = false;
+                    break;
+                case 8:
+                    yield return StartCoroutine(dialog.ChangeBackgroundForScripts("GuysRoom", 2.0f, 2.0f));
+                    dialog.GetDialog("FirstStory", "FirstStory_08");
+                    dialog.setDialog();
+                    progress = 9;
+                    Dialog.DialogSkipOn = false;
+                    break;
+
+                case 9:
                     List<string> scenesToLoad = new List<string> {"GuysRoom"};
                     gameMasterScript.InventoryPanelActive();
                     sceneManagerHelper.LoadSceneWithTransition(scenesToLoad);
