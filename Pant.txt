@@ -1,0 +1,11 @@
+[ChangeNPC,Universal]
+
+[show]
+
+獲得娃娃的褲子。[w]
+[ChangeNPC,Guys]
+這個褲子好小，我根本穿不下！[w]
+[ChangeNPC,Sheep]
+這麼小的褲子？難道是給玩偶穿的？[w]
+
+[hide]
