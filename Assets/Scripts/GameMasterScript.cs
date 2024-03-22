@@ -83,6 +83,7 @@ public enum FirstFloorItem
     SecondFloorDoor,
     UtilityRoomDoor,
     ShoeBox,
+    Shoe,
     RestRoomDoor,
     GateExit,
     Carpet,
@@ -249,6 +250,7 @@ public class GameMasterScript : MonoBehaviour
             {
                 case GuysTableItem.Light:
                     Debug.Log("You selected the FlashLight");
+                    Dialog.GetRoomItem("GuysTable","FlashLight");
                     break;
                 case GuysTableItem.Return:
                     Debug.Log("You selected the return");
@@ -273,6 +275,10 @@ public class GameMasterScript : MonoBehaviour
                         interactScript = SelectedObject.GetComponent<CanInteractAgain>();
                     }
                     break;
+                case GuysGarderobeItem.Pant:
+                    Debug.Log("You selected the pant");
+                    Dialog.GetRoomItem("GuysGarderobe","Pant");
+                    break;
                 case GuysGarderobeItem.Return:
                     Debug.Log("You selected the return");
                     List<string> GuyRoomScenes = new List<string> {"GuysRoom"};
@@ -295,6 +301,10 @@ public class GameMasterScript : MonoBehaviour
                     {
                         interactScript = SelectedObject.GetComponent<CanInteractAgain>();
                     }
+                    break;
+                case GuysCarpetItem.Clothes:
+                    Debug.Log("You selected the clothes");
+                    Dialog.GetRoomItem("GuysCarpet","Clothes");
                     break;
                 case GuysCarpetItem.Return:
                     Debug.Log("You selected the return");
@@ -402,6 +412,10 @@ public class GameMasterScript : MonoBehaviour
                 case FirstFloorItem.ShoeBox:
                     Debug.Log("You selected the shoe box");
                     break;
+                case FirstFloorItem.Shoe:
+                    Debug.Log("You selected the shoe");
+                    Dialog.GetRoomItem("FirstFloor","Shoe");
+                    break;
                 case FirstFloorItem.RestRoomDoor:
                     Debug.Log("You selected the rest room door");
                     Dialog.GetRoomItem("FirstFloor","RestRoomDoor");
@@ -443,7 +457,9 @@ public class GameMasterScript : MonoBehaviour
                     break;
                 case LivingRoomItem.TVCabinet:
                     Debug.Log("You selected the TV cabinet");
-                    Dialog.GetRoomItem("LivingRoom","TVCabinet");
+                    List<string> LivingRoom_TVCabinetScenes = new List<string> {"LivingRoom_TVCabinet"};
+                    sceneManagerHelper.LoadSceneWithTransition(LivingRoom_TVCabinetScenes);
+                    SelectedRoom = SelectedRoom.LivingRoom_TVCabinet;
                     break;
                 case LivingRoomItem.Table:
                     Debug.Log("You selected the table");
