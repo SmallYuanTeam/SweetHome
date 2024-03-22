@@ -12,7 +12,6 @@ public class Dialog : MonoBehaviour
     GameMasterScript gameMaster;
     private ProCamera2DTransitionsFX transitionsFX;
     public bool FirstDialogOn = false;
-    private string UserName;
     public static bool DialogOn = false;
     public static bool DialogSkipOn = false;
     private Button DialogButton;
@@ -32,6 +31,7 @@ public class Dialog : MonoBehaviour
         flowerSys.RegisterCommand("ChangeNPC", ChangeNPC);
         flowerSys.RegisterCommand("ChangeBackground", ChangeBackground);
         flowerSys.RegisterCommand("ChangeItem", ChangeItemWrapper);
+        flowerSys.RegisterCommand("ChangeNPCFace", ChangeNPCFace);
     }
     void Awake()
     {
@@ -142,6 +142,11 @@ public class Dialog : MonoBehaviour
         Debug.Log($"ChangeNPC: {string.Join(", ", _params)}");
         DialogBackground.GetComponent<Image>().sprite = Resources.Load<Sprite>($"Sprites/UI/DialogItem/{_params[0]}");
         DialogCharacter.GetComponent<Image>().sprite = Resources.Load<Sprite>($"Sprites/Story/{_params[0]}");
+    }
+    private void ChangeNPCFace(List<string> _params)
+    {
+        Debug.Log($"ChangeNPCFace: {string.Join(", ", _params)}");
+        DialogCharacter.GetComponent<Image>().sprite = Resources.Load<Sprite>($"Sprites/Story/{_params[0]}/{_params[1]}");
     }
 
     public void ChangeBackground(List<string> _params)
