@@ -113,7 +113,7 @@ TextureImporter:
         width: 1490
         height: 3623
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -121,111 +121,6 @@ TextureImporter:
       bones: []
       spriteID: a9623090ba49d84408cb4eb018ee2b44
       internalID: 1800921824
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Guys_1
-      rect:
-        serializedVersion: 2
-        x: 7119
-        y: 2694
-        width: 43
-        height: 22
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ba2e100a805c1ee4d8b202bb58ab9cea
-      internalID: 1741082875
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Guys_2
-      rect:
-        serializedVersion: 2
-        x: 7179
-        y: 2704
-        width: 4
-        height: 4
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a3371dfac344d7d4fa18b0d796f3be6c
-      internalID: 411514348
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Guys_3
-      rect:
-        serializedVersion: 2
-        x: 7132
-        y: 2682
-        width: 47
-        height: 22
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e262acc3fd52c374a87ff0b7a6f11b55
-      internalID: 2137414937
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Guys_4
-      rect:
-        serializedVersion: 2
-        x: 6906
-        y: 2636
-        width: 30
-        height: 26
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 130ae445d2193364788ef8183322c97e
-      internalID: -710300264
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Guys_5
-      rect:
-        serializedVersion: 2
-        x: 6906
-        y: 2650
-        width: 35
-        height: 28
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 89f653ef61919d44188f8f64c8244842
-      internalID: -4553625
       vertices: []
       indices: 
       edges: []
@@ -247,6 +142,8 @@ TextureImporter:
       Guys_3: 2137414937
       Guys_4: -710300264
       Guys_5: -4553625
+      Guys_6: -213036869
+      Guys_7: -1623060025
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
