@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Item : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class Item : MonoBehaviour
     void Start()
     {
         button = GetComponent<Button>();
-        Dialog = GameObject.Find("Dialog").GetComponent<Dialog>();
+        SceneName = SceneManager.GetActiveScene().name;
         // 找到玩家
         player = FindObjectOfType<Player>();
         if (Player.Instance.HasObtainedItem(item.itemID))
