@@ -7,8 +7,8 @@ public class GuysSceneItem : MonoBehaviour
 {
     // 自己身上的CanInteractAgain
     public CanInteractAgain canInteractAgain;
-    public Image imageA;
-    public Image imageB;
+    public GameObject imageA;
+    public GameObject imageB;
     public GameObject Item;
 
     private bool isShowingA = true;
@@ -17,38 +17,43 @@ public class GuysSceneItem : MonoBehaviour
     void Start()
     {
         canInteractAgain = FindObjectOfType<CanInteractAgain>();
-        Item.GetComponent<Button>().interactable = false;
     }
     // 當按鈕被點擊
     public void OnClick()
     {
         if (canInteractAgain.interactCount == 0)
         {
-            StartCoroutine(FadeTransition());
+            StartCoroutine(FadeTransition(imageA, imageB));
         
         }
     }
-     IEnumerator FadeTransition()
+    IEnumerator FadeTransition(GameObject fadeOutObject, GameObject fadeInObject)
     {
-        Image fadeOutImage = isShowingA ? imageA : imageB;
-        Image fadeInImage = isShowingA ? imageB : imageA;
+        CanvasGroup fadeOutGroup = fadeOutObject.GetComponent<CanvasGroup>();
+        CanvasGroup fadeInGroup = fadeInObject.GetComponent<CanvasGroup>();
+
+        // 确保两个对象都是激活的，fadeInObject 初始透明
+        fadeOutObject.SetActive(true);
+        fadeInObject.SetActive(true);
+        fadeInGroup.alpha = 0;
+        fadeInGroup.interactable = false;
 
         float elapsedTime = 0f;
+
+        // 同时淡出 fadeOutObject 并淡入 fadeInObject
         while (elapsedTime < fadeDuration)
         {
             elapsedTime += Time.deltaTime;
             float t = elapsedTime / fadeDuration;
-            fadeOutImage.color = new Color(fadeOutImage.color.r, fadeOutImage.color.g, fadeOutImage.color.b, 1 - t);
-            fadeInImage.color = new Color(fadeInImage.color.r, fadeInImage.color.g, fadeInImage.color.b, t);
-            if (Item != null)
-            {
-                ItemPickUp(fadeInImage);
-            }
+            fadeOutGroup.alpha = 1 - t;
+            fadeInGroup.alpha = t;
             yield return null;
         }
-        
-        isShowingA = !isShowingA; // Toggle the flag
+        fadeOutGroup.interactable = false;
+        fadeOutGroup.blocksRaycasts = false;
+        fadeInGroup.interactable = true;
     }
+
     void ItemPickUp(Image image)
     {
         Item.SetActive(isShowingA);

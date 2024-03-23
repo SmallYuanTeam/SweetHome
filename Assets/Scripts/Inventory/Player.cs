@@ -62,11 +62,14 @@ public class Player : MonoBehaviour
         {
             if (!obtainedItemIDs.Contains(id))
             {
-                return false; // 如果有任何一个 ID 没有被获取过，返回 false
+                Debug.Log($"Missing item ID: {id}");
+                return false;
             }
         }
-        return true; // 所有 ID 都已被获取过，返回 true
+        Debug.Log("All required items have been obtained.");
+        return true;
     }
+
     public void ReturnToMainMenu()
     {
         inventory.Container.Clear();

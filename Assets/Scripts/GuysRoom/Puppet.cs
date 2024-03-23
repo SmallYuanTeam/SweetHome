@@ -6,11 +6,10 @@ using UnityEngine.UI;
 
 public class Puppet : MonoBehaviour
 {
-    public Image imageA;
-    public Image imageB;
+    public GameObject imageA;
+    public GameObject imageB;
     public GameObject player;
     public InventoryUI inventoryUI;
-    private bool isShowingA = true;
     public GameObject Item;
     List<string> itemIDToCheck = new List<string> {"Hat", "Cloth", "Pant", "Shoe"};
     public List<ItemObject> itemsToCheck;
@@ -22,62 +21,65 @@ public class Puppet : MonoBehaviour
         hasAllItems = Player.Instance.HaveObtainedAllItems(itemIDToCheck);
         player = GameObject.Find("Player");
         inventoryUI = GameObject.Find("InventoryScreen").GetComponent<InventoryUI>();
-
-        SetItemAlpha(0); 
     }
 
     public void ClickPuppet()
     {
         if (hasAllItems)
         {
-            StartCoroutine(FadeInItem());
-            StartCoroutine(FadeTransition());
-            if (player != null)
+            Debug.Log("Has all items, proceeding with fade transition.");
+            // 確保這裡只會執行一次，例如透過檢查物件的激活狀態
+            if (!imageB.activeSelf) // 假設初始狀態下imageB是非激活的
             {
-                Player.Instance.inventory.RemoveListItem(itemsToCheck);
-                inventoryUI.UpdateInventoryUI();
+                
+                StartCoroutine(FadeTransition(imageA, imageB));
+                if (player != null)
+                {
+                    Player.Instance.inventory.RemoveListItem(itemsToCheck);
+                    inventoryUI.UpdateInventoryUI();
+                }
             }
         }
+        else
+        {
+            Debug.Log("Does not have all items.");
+        }
     }
-    IEnumerator FadeTransition()
+    IEnumerator FadeTransition(GameObject fadeOutObject, GameObject fadeInObject)
     {
-        Image fadeOutImage = isShowingA ? imageA : imageB;
-        Image fadeInImage = isShowingA ? imageB : imageA;
+        Debug.Log("FadeTransition started.");
+        CanvasGroup fadeOutGroup = fadeOutObject.GetComponent<CanvasGroup>();
+        CanvasGroup fadeInGroup = fadeInObject.GetComponent<CanvasGroup>();
+
+        fadeInObject.SetActive(true);
+        fadeInGroup.alpha = 0;
 
         float elapsedTime = 0f;
+
         while (elapsedTime < fadeDuration)
-        {
+        {  
+            Debug.Log($"Fading out. Alpha: {fadeOutGroup.alpha}");
             elapsedTime += Time.deltaTime;
             float t = elapsedTime / fadeDuration;
-            fadeOutImage.color = new Color(fadeOutImage.color.r, fadeOutImage.color.g, fadeOutImage.color.b, 1 - t);
-            fadeInImage.color = new Color(fadeInImage.color.r, fadeInImage.color.g, fadeInImage.color.b, t);
+            fadeOutGroup.alpha = 1 - t;
             yield return null;
         }
-        
-        //isShowingA = !isShowingA; // Toggle the flag
-    }
-    IEnumerator FadeInItem()
-    {
-        float currentTime = 0;
-        Image itemImage = Item.GetComponent<Image>();
-        Item.SetActive(true);
-        Color startColor = itemImage.color;
-        Color endColor = new Color(1, 1, 1, 1);
 
-        while (currentTime < fadeDuration)
+        fadeOutGroup.interactable = false;
+        fadeOutGroup.blocksRaycasts = false;
+
+        // 重置 elapsedTime 为 0 以用于淡入效果
+        elapsedTime = 0f;
+
+        // 淡入 fadeInObject
+        while (elapsedTime < fadeDuration)
         {
-            currentTime += Time.deltaTime;
-            float alpha = Mathf.Clamp01(currentTime / fadeDuration);
-            itemImage.color = Color.Lerp(startColor, endColor, alpha);
+            Debug.Log($"Fading in. Alpha: {fadeInGroup.alpha}");
+            elapsedTime += Time.deltaTime;
+            float t = elapsedTime / fadeDuration;
+            fadeInGroup.alpha = t;
             yield return null;
         }
-
-        Item.GetComponent<Button>().interactable = true; 
-    }
-
-    void SetItemAlpha(float alpha)
-    {
-        Image itemImage = Item.GetComponent<Image>();
-        itemImage.color = new Color(itemImage.color.r, itemImage.color.g, itemImage.color.b, alpha);
+        Debug.Log("FadeTransition completed.");
     }
 }
