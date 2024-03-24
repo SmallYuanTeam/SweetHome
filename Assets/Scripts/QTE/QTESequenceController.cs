@@ -9,6 +9,7 @@ public class QTESequenceController : MonoBehaviour
     public int sequenceLength = 3;
     private List<KeyCode> currentSequence = new List<KeyCode>();
     private bool isSequenceActive = false;
+    public bool isSequenceCompleted = false;
     public float timeBetweenSequences = 2f;
 
     private Dictionary<KeyCode, string> keyCodeToResourcePath = new Dictionary<KeyCode, string>()
@@ -23,13 +24,14 @@ public class QTESequenceController : MonoBehaviour
 
     void Start()
     {
-        StartNewSequence();
+        //StartNewSequence();
     }
 
     void Update()
     {
         if (isSequenceActive && currentSequence.Count > 0)
         {
+            isSequenceCompleted = false;
             KeyCode expectedKey = currentSequence[currentIndex];
             if (Input.GetKeyDown(expectedKey))
             {
@@ -39,11 +41,10 @@ public class QTESequenceController : MonoBehaviour
 
                 if (currentIndex >= currentSequence.Count)
                 {
-                    
                     Debug.Log("QTE Sequence Completed Successfully!");
                     isSequenceActive = false;
                     StartCoroutine(WaitAndStartNewSequence(timeBetweenSequences));
-                    
+                    isSequenceCompleted = true;
                 }
             }
             else if (Input.anyKeyDown)
@@ -63,7 +64,7 @@ public class QTESequenceController : MonoBehaviour
         StartNewSequence();
     }
 
-    void StartNewSequence()
+    public void StartNewSequence()
     {
         currentIndex = 0;
         isSequenceActive = true;
