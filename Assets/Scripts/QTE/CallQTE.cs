@@ -31,7 +31,30 @@ public class CallQTE : MonoBehaviour
         {
             case 0:
                 yield return null;
+                dialog.GetDialog("FirstStory","FirstStory08");
+                dialog.setDialog();
+                QTESequenceController.SetUpQTESetting(4,99);
                 QTESequenceController.StartNewSequence();
+                progress = 1;
+                Dialog.DialogSkipOn = false;
+                break;
+            case 1:
+                yield return null;
+                dialog.GetDialog("FirstStory","FirstStory08");
+                dialog.setDialog();
+                QTESequenceController.SetUpQTESetting(5,99);
+                QTESequenceController.StartNewSequence();
+                progress = 2;
+                Dialog.DialogSkipOn = false;
+                break;
+            case 2:
+                yield return null;
+                dialog.GetDialog("FirstStory","FirstStory08");
+                dialog.setDialog();
+                QTESequenceController.SetUpQTESetting(6,99);
+                QTESequenceController.StartNewSequence();
+                progress = 1;
+                Dialog.DialogSkipOn = false;
                 break;
         }
         isCoroutineRunning = false;
