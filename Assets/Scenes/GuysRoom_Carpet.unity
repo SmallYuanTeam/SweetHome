@@ -472,7 +472,7 @@ MonoBehaviour:
   item: {fileID: 11400000, guid: 2ab1fed2458fa0b4392b0a3b76412285, type: 2}
   player: {fileID: 0}
   button: {fileID: 0}
-  SceneName: 
+  SceneName: GuysCarpet
 --- !u!1 &1167339643
 GameObject:
   m_ObjectHideFlags: 0

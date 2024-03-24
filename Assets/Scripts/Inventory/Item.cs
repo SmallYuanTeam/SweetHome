@@ -15,7 +15,6 @@ public class Item : MonoBehaviour
     void Start()
     {
         button = GetComponent<Button>();
-        SceneName = SceneManager.GetActiveScene().name;
         Dialog = FindObjectOfType<Dialog>();
         // 找到玩家
         player = FindObjectOfType<Player>();

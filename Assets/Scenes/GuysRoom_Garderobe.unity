@@ -356,7 +356,7 @@ MonoBehaviour:
   item: {fileID: 11400000, guid: bff7d7f7e136ac246aadf8efcd532f18, type: 2}
   player: {fileID: 0}
   button: {fileID: 0}
-  SceneName: 
+  SceneName: GuysGarderobe
 --- !u!1 &1338208130
 GameObject:
   m_ObjectHideFlags: 0
