@@ -1,0 +1,11 @@
+[ChangeNPC,Guys]
+
+[show]
+
+架子有好多東西，但爸爸媽媽都不讓我碰。[w]
+[ChangeNPC,Sheep]
+應該是怕東西落下傷到蓋伊吧，要聽爸爸媽媽的話哦！[w]
+[ChangeNPC,Guys]
+好！[w]
+
+[hide]

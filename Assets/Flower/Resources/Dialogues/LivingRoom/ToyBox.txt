@@ -1,0 +1,10 @@
+[ChangeNPC,Guys]
+
+[show]
+
+我的玩具箱，裡面有很多玩具。[w]
+.....？好像少了一輛小車子？[w]
+[ChangeNPC,Sheep]
+應該是落在什麼地方了，到處找找吧！[w]
+
+[hide]

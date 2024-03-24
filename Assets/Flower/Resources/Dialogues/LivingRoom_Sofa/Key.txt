@@ -1,0 +1,11 @@
+[ChangeNPC,Guys]
+
+[show]
+欸？有一個小鑰匙在枕頭下。[w]
+[ChangeNPC,Sheep]
+應該是不小心落下的吧！[w]
+[ChangeNPC,Guys]
+這個鑰匙好小哦，和爸爸開門用的完全不像。[w]
+[ChangeNPC,Sheep]
+.....應該是開小櫃子之類的地方用的，蓋伊可以試試看哪裡能用！[w]
+[hide]

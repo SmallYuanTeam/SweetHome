@@ -1,0 +1,14 @@
+[ChangeNPC,Guys]
+
+[show]
+
+肖恩！這個掃把上好像有什麼東西？[w]
+[ChangeNPC,Sheep]
+哦？是什麼東西，能拿起來嗎？[w]
+[ChangeNPC,Guys]
+......好像被卡在掃把裡面，拿不出來。[w]
+[ChangeNPC,Sheep]
+那麼，找找看有什麼東西能剪開它吧！[w]
+
+
+[hide]
