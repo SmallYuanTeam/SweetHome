@@ -1,0 +1,12 @@
+[ChangeNPC,Guys]
+
+[show]
+
+蓋伊：從這裡可以看到鄰居的家！[w]
+蓋伊：但最近爸爸都不讓我見他們.....[w]
+[ChangeNPC,Sheep]
+肖恩：沒關係，之後有機會我和你偷偷去見他們吧！[w]
+[ChangeNPC,Guys]
+蓋伊：真的嗎！說好哦！[w]
+
+[hide]
