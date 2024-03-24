@@ -1,0 +1,11 @@
+[ChangeNPC,Guys]
+
+[show]
+
+有一個特別小的鞋子放在鞋櫃裡！[w]
+[ChangeNPC,Sheep]
+把它拿起來吧！別搞混了。[w]
+[ChangeNPC,Universal]
+獲得娃娃的鞋子。[w]
+
+[hide]

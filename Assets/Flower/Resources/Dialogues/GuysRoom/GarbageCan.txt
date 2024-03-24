@@ -1,10 +1,6 @@
-[ChangeNPC,Universal]
+[ChangeNPC,Guys]
 
 [show]
-什么都没有。[w]
-[ChangeNPC,Doctor]
-什么都没有。[w]
-[ChangeNPC,Guys]
-什么都没有。[w]
+裡面什麼都没有。[w]
 
 [hide]

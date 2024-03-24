@@ -1,0 +1,9 @@
+[ChangeNPC,Guys]
+
+[show]
+
+玄關的大門緊閉著。[w]
+[ChangeNPC,Sheep]
+不要隨便出去比較好。[w]
+
+[hide]

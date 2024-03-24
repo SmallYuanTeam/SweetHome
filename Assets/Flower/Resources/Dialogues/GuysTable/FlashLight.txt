@@ -1,0 +1,13 @@
+[ChangeNPC,Universal]
+
+[show]
+
+獲得手電筒（沒電）。[w]
+[ChangeNPC,Guys]
+怎麼沒辦法發亮？[w]
+[ChangeNPC,Sheep]
+難道是沒電了？[w]
+去找找有沒有電池吧！[w]
+
+
+[hide]

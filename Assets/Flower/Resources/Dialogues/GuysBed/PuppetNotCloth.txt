@@ -1,0 +1,15 @@
+[ChangeNPC,Guys]
+
+[show]
+
+欸？這個娃娃是？[w]
+[ChangeNPC,Sheep]
+怎麼啦？什麼娃娃？[w]
+[ChangeNPC,Guys]
+有一個沒有衣服的娃娃在我的床上，但我不認識這個娃娃。[w]
+[ChangeNPC,Sheep]
+沒穿衣服.....那麼我們去找衣服給他穿吧！[w]
+[ChangeNPC,Guys]
+好！！[w]
+
+[hide]
