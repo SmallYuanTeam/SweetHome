@@ -9,6 +9,7 @@ public class CallQTE : MonoBehaviour
     private Dialog dialog;
     private GameMasterScript gameMasterScript;
     private int progress = 0;
+    private bool isInsideQTE = false;
     private bool isCoroutineRunning = false;
 
     void Awake()
@@ -19,7 +20,7 @@ public class CallQTE : MonoBehaviour
     }
     void Update()
     {
-        if (!Dialog.DialogOn && dialog.DialogIsCompleted() && !isCoroutineRunning && QTESequenceController.isSequenceCompleted)
+        if (!Dialog.DialogOn && dialog.DialogIsCompleted() && !isCoroutineRunning && QTESequenceController.isSequenceCompleted && isInsideQTE)
         {
             StartCoroutine(ProcessStoryProgress());
         }
@@ -58,5 +59,9 @@ public class CallQTE : MonoBehaviour
                 break;
         }
         isCoroutineRunning = false;
+    }
+    public void SetIsInsideQTE()
+    {
+        isInsideQTE = true;
     }
 }
