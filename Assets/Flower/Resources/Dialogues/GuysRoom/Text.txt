@@ -1,0 +1,12 @@
+[ChangeNPC,Universal]
+
+[show]
+什么都没有。[w]
+[ChangeNPC,Doctor]
+什么都没有。[w]
+[ChangeNPC,Guys]
+什么都没有。[w]
+[ChangeNPC,Sheep]
+什么都没有。[w]
+
+[hide]

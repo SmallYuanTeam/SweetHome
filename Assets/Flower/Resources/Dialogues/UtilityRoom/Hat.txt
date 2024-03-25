@@ -1,0 +1,10 @@
+[ChangeNPC,Guys]
+[show]
+
+這裡好像有一個不像抹布的東西。[w]
+[ChangeNPC,Sheep]
+拿起來看看唄！[w]
+[ChangeNPC,Universal]
+獲得娃娃的帽子。[w]
+
+[hide]

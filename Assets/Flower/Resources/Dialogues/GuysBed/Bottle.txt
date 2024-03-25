@@ -1,0 +1,16 @@
+[ChangeNPC,Sheep]
+
+[show]
+
+蓋伊，那是什麼東西？[w]
+[ChangeNPC,Guys]
+一些紅色斑點的玻璃碎片？[w]
+[ChangeNPC,Sheep]
+紅色斑點？碎片？[w]
+.....說不定是娃娃給你的獎勵，先帶著吧！[w]
+[ChangeNPC,Guys]
+好！[w]
+[ChangeNPC,Universal]
+獲得沾血的酒瓶碎片。[w]
+
+[hide]

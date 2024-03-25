@@ -1,0 +1,8 @@
+[ChangeNPC,Guys]
+
+[show]
+這是一台電視機，我經常和肖恩你一起看電視。[w]
+[ChangeNPC,Sheep]
+之後再一起看吧！[w]
+
+[hide]

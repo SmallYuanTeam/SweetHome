@@ -1,0 +1,11 @@
+[ChangeNPC,Universal]
+
+[show]
+
+獲得娃娃的衣服。[w]
+[ChangeNPC,Guys]
+小小的衣服被壓在地毯下！[w]
+[ChangeNPC,Sheep]
+是玩玩偶的時候弄掉的嗎？[w]
+
+ [hide]

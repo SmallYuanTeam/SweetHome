@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 1208898575}
   - component: {fileID: 1208898576}
   m_Layer: 0
-  m_Name: LivingRoom
+  m_Name: LivingRoom_Sofa
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -785,3 +785,4 @@ MonoBehaviour:
   item: {fileID: 11400000, guid: d50fe16b4a9d05040b86c9df152775ba, type: 2}
   player: {fileID: 0}
   button: {fileID: 0}
+  SceneName: 

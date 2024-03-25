@@ -1,0 +1,8 @@
+[ChangeNPC,Guys]
+
+[show]
+桌上有放著筆盒。[w]
+[ChangeNPC,Sheep]
+翻翻看有什麼東西吧！[w]
+
+[hide]

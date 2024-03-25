@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Item : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class Item : MonoBehaviour
     void Start()
     {
         button = GetComponent<Button>();
-        Dialog = GameObject.Find("Dialog").GetComponent<Dialog>();
+        Dialog = FindObjectOfType<Dialog>();
         // 找到玩家
         player = FindObjectOfType<Player>();
         if (Player.Instance.HasObtainedItem(item.itemID))
@@ -31,9 +32,7 @@ public class Item : MonoBehaviour
     {
         // 假设这个方法在物品被玩家拾取时被调用
         Player.Instance.AddItemToInventory(item);
-        // 從父對像身上得到場景
-        SceneName = transform.parent.name;
-        Dialog.GetRoomItem(SceneName, item.itemID);
+        Dialog.GetRoomItem(SceneName,item.itemID);
         Player.Instance.AddObtainedItemID(item.itemID);
         gameObject.SetActive(false); // 隐藏物品
     }

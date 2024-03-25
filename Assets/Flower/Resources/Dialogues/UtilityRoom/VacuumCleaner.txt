@@ -1,0 +1,9 @@
+[ChangeNPC,Guys]
+
+[show]
+
+一個普通的吸塵器。[w]
+[ChangeNPC,Sheep]
+不要隨意觸碰比較好。[w]
+
+[hide]

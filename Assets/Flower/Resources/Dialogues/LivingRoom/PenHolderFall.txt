@@ -1,0 +1,7 @@
+[ChangeNPC,Sheep]
+
+[show]
+
+不要再觸碰比較好。[w]
+
+[hide]

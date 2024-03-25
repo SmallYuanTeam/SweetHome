@@ -1,0 +1,16 @@
+[ChangeNPC,Guys]
+
+[show]
+
+一個掃把，我經常幫媽媽一起掃地！[w]
+[ChangeNPC,Sheep]
+蓋伊真了不起！媽媽一定很開心。[w]
+[ChangeNPC,Guys]
+嗯，但最近媽媽都不和我說話，也不願意和我在一起....[w]
+[ChangeNPC,Sheep]
+蓋伊.....別傷心，媽媽只是有點累了。[w]
+蓋伊要繼續幫助媽媽哦！[w]
+[ChangeNPC,Guys]
+....嗯！我知道了！[w]
+
+[hide]

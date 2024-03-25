@@ -63,7 +63,8 @@ public enum GuysBedItem // 完成
 {
     none,
     Bed,
-    Puppet,
+    PuppetClothed,
+    PuppetNotCloth,
     Bottle,
     Return
 }
@@ -329,9 +330,13 @@ public class GameMasterScript : MonoBehaviour
                         interactScript = SelectedObject.GetComponent<CanInteractAgain>();
                     }
                     break;
-                case GuysBedItem.Puppet:
-                    Debug.Log("You selected the puppet");
-                    Dialog.GetRoomItem("GuysBed","Puppet");
+                case GuysBedItem.PuppetClothed:
+                    Debug.Log("You selected the puppet cloth");
+                    Dialog.GetRoomItem("GuysBed","PuppetCloth");
+                    break;
+                case GuysBedItem.PuppetNotCloth:
+                    Debug.Log("You selected the puppet not cloth");
+                    Dialog.GetRoomItem("GuysBed","PuppetNotCloth");
                     break;
                 case GuysBedItem.Bottle:
                     Debug.Log("You selected the Bottle");
