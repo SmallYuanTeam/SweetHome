@@ -1,0 +1,9 @@
+[ChangeNPC,Guys]
+
+[show]
+
+爸爸媽媽現在正在睡覺。[w]
+[ChangeNPC,Sheep]
+不要吵醒他們比較好哦。[w]
+
+[hide]
