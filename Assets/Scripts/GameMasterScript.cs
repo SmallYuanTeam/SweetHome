@@ -37,6 +37,8 @@ public enum GuysRoomItem // 完成
     Door,
     Carpet,
     Chair,
+    Window1,
+    Window2,
     GarbageCan
 }
 public enum GuysTableItem // 完成
@@ -125,8 +127,6 @@ public enum LivingRoom_TableItem
 public enum LivingRoom_TVCabinetItem
 {
     none,
-    Safe,
-    TVDrawer,
     Return
 }
 public enum LivingRoom_TVDrawerItem
@@ -241,6 +241,14 @@ public class GameMasterScript : MonoBehaviour
                 case GuysRoomItem.GarbageCan:
                     Debug.Log("You selected the garbage can");
                     Dialog.GetRoomItem("GuysRoom","GarbageCan");
+                    break;
+                case GuysRoomItem.Window1:
+                    Debug.Log("You selected the Window1");
+                    Dialog.GetRoomItem("GuysRoom","Window1");
+                    break;
+                case GuysRoomItem.Window2:
+                    Debug.Log("You selected the Window2");
+                    Dialog.GetRoomItem("GuysRoom","Window2");
                     break;
                 default:
                     Debug.Log("You selected nothing");
@@ -582,18 +590,6 @@ public class GameMasterScript : MonoBehaviour
                     List<string> LivingRoomScenes = new List<string> {"LivingRoom"};
                     sceneManagerHelper.LoadSceneWithTransition(LivingRoomScenes);
                     SelectedRoom = SelectedRoom.LivingRoom;
-                    break;
-                case LivingRoom_TVCabinetItem.Safe:
-                    Debug.Log("You selected the safe");
-                    List<string> LivingRoomSafeScenes = new List<string> {"LivingRoom_Safe"};
-                    sceneManagerHelper.LoadSceneWithTransition(LivingRoomSafeScenes);
-                    SelectedRoom = SelectedRoom.LivingRoom_Safe;
-                    break;
-                case LivingRoom_TVCabinetItem.TVDrawer:
-                    Debug.Log("You selected the TV drawer");
-                    List<string> LivingRoomTVDrawerScenes = new List<string> {"LivingRoom_TVDrawer"};
-                    sceneManagerHelper.LoadSceneWithTransition(LivingRoomTVDrawerScenes);
-                    SelectedRoom = SelectedRoom.LivingRoom_TVDrawer;
                     break;
                 default:
                     Debug.Log("You selected nothing");
