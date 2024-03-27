@@ -10,7 +10,7 @@ public class InventoryUI : MonoBehaviour
     public List<ItemObject> selectedItems = new List<ItemObject>();
     public List<CraftRecipe> allRecipes = new List<CraftRecipe>();
     public Image selectedItemImage;
-
+    private Coroutine clearItemsCoroutine;
     private void Start()
     {
         // 找到自己底下的所有itemslots按鈕(名字要對)
@@ -34,7 +34,7 @@ public class InventoryUI : MonoBehaviour
     }
 
     // 按鈕被點擊時調用的方法
-    private void OnItemSlotClicked(int slotIndex)
+    private IEnumerator OnItemSlotClicked(int slotIndex)
     {
         Debug.Log($"ItemSlot {slotIndex} 被點擊");
 
@@ -48,6 +48,8 @@ public class InventoryUI : MonoBehaviour
             {
                 selectedItemImage.sprite = selectedItem.icon;
                 selectedItemImage.gameObject.SetActive(true);
+                yield return new WaitForSeconds(1f);
+                selectedItemImage.gameObject.SetActive(false);
 
             }
             else
@@ -57,6 +59,13 @@ public class InventoryUI : MonoBehaviour
             }
 
             TryCraftItem();
+            if (clearItemsCoroutine != null)
+            {
+                StopCoroutine(clearItemsCoroutine);
+            }
+
+            // 啟動新的協程並將其賦值給追蹤變量
+            clearItemsCoroutine = StartCoroutine(ClearSelectedItemsAfterDelay(5f));
         }
     }
 
@@ -164,6 +173,13 @@ public class InventoryUI : MonoBehaviour
             }
         }
         return true;
+    }
+    private IEnumerator ClearSelectedItemsAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        selectedItems.Clear();
+        Debug.Log("Selected items have been cleared after delay.");
+        UpdateInventoryUI();
     }
 
 }
