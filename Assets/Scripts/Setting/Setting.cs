@@ -91,7 +91,7 @@ public class Setting : MonoBehaviour
     public void CloseGame()
     {
         List<string> MainMenuToLoad = new List<string> {"MainMenu"};
-        gameMasterScript.InventoryPanelActive();
+        gameMasterScript.InventoryPanelDeactive();
         player.ReturnToMainMenu();
         sceneManagerHelper.LoadSceneWithTransition(MainMenuToLoad);
         ReturnToGame();
