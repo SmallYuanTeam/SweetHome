@@ -1,0 +1,7 @@
+[ChangeNPC,Sheep]
+
+[show]
+
+別出聲蓋伊！放鬆，放鬆。[w]
+
+[hide]

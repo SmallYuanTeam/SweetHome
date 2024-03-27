@@ -1,0 +1,14 @@
+[ChangeNPC,Sheep]
+
+[show]
+
+......怎麼樣？“他”走了嗎？[w]
+[ChangeNPC,Guys]
+哈....哈....好像走了。[w]
+謝謝你！肖恩！沒有你我肯定要被抓了！[w]
+[ChangeNPC,Sheep]
+蓋伊沒事就好，接下來要小心點探索，別再驚動“他”了。[w]
+[ChangeNPC,Guys]
+好！[w]
+
+[hide]
