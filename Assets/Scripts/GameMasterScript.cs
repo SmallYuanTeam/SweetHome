@@ -125,6 +125,8 @@ public enum LivingRoom_TableItem
 public enum LivingRoom_TVCabinetItem
 {
     none,
+    Safe,
+    TVDrawer,
     Return
 }
 public enum LivingRoom_TVDrawerItem
@@ -580,6 +582,18 @@ public class GameMasterScript : MonoBehaviour
                     List<string> LivingRoomScenes = new List<string> {"LivingRoom"};
                     sceneManagerHelper.LoadSceneWithTransition(LivingRoomScenes);
                     SelectedRoom = SelectedRoom.LivingRoom;
+                    break;
+                case LivingRoom_TVCabinetItem.Safe:
+                    Debug.Log("You selected the safe");
+                    List<string> LivingRoomSafeScenes = new List<string> {"LivingRoom_Safe"};
+                    sceneManagerHelper.LoadSceneWithTransition(LivingRoomSafeScenes);
+                    SelectedRoom = SelectedRoom.LivingRoom_Safe;
+                    break;
+                case LivingRoom_TVCabinetItem.TVDrawer:
+                    Debug.Log("You selected the TV drawer");
+                    List<string> LivingRoomTVDrawerScenes = new List<string> {"LivingRoom_TVDrawer"};
+                    sceneManagerHelper.LoadSceneWithTransition(LivingRoomTVDrawerScenes);
+                    SelectedRoom = SelectedRoom.LivingRoom_TVDrawer;
                     break;
                 default:
                     Debug.Log("You selected nothing");
