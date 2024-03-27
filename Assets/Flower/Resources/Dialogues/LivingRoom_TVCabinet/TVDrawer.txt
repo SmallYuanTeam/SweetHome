@@ -1,0 +1,12 @@
+[ChangeNPC,Guys]
+
+[show]
+這個櫃子打不開。[w]
+[ChangeNPC,Sheep]
+有沒有鑰匙孔之類的地方？[w]
+[ChangeNPC,Guys]
+......好像有！但鎖孔好小，需要小小的鑰匙才能打開。[w]
+[ChangeNPC,Sheep]
+找一找鑰匙在什麼地方吧！[w]
+
+[hide]

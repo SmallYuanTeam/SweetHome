@@ -1,0 +1,12 @@
+[ChangeNPC,Guys]
+
+[show]
+
+這是我丟失的玩具小車！[r]
+為什麼會在這裡？[w]
+[ChangeNPC,Sheep]
+是不小心卡在裡面的吧？[w]
+[ChangeNPC,Universal]
+獲得玩具小車。[w]
+
+[hide]

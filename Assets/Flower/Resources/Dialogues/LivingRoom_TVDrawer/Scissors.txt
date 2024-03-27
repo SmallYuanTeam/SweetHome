@@ -1,0 +1,11 @@
+[ChangeNPC,Guys]
+
+[show]
+
+櫃子裡有個剪刀！[w]
+[ChangeNPC,Sheep]
+小心點拿，說不定哪裡能用上。[w]
+[ChangeNPC,Universal]
+獲得剪刀。[w]
+
+[hide]
