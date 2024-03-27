@@ -1,0 +1,10 @@
+[ChangeNPC,Guys]
+
+[show]
+
+這裡是爸爸工作的地方。[w]
+但我不知道怎麼進去。[w]
+[ChangeNPC,Sheep]
+那先跳過這裡吧。[w]
+
+[hide]

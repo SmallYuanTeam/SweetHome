@@ -1,0 +1,9 @@
+[ChangeNPC,Guys]
+
+[show]
+
+這裡是客房，但我進去會被爸爸罵。[w]
+[ChangeNPC,Sheep]
+那麼先不要進去比較好。[w]
+
+[hide]

@@ -357,30 +357,46 @@ public class GameMasterScript : MonoBehaviour
         {
             switch (SecondFloorItem)
             {
-                case SecondFloorItem.BrothersRoomDoor:
-                    Debug.Log("You selected the brothers room door");
-                    List<string> BrothersRoomScenes = new List<string> {"BrothersRoom"};
-                    sceneManagerHelper.LoadSceneWithTransition(BrothersRoomScenes);
-                    SelectedRoom = SelectedRoom.BrothersRoom;
-                    break;
-                case SecondFloorItem.ParentsRoomDoor:
-                    Debug.Log("You selected the parents room door");
-                    List<string> ParentsRoomScenes = new List<string> {"ParentsRoom"};
-                    sceneManagerHelper.LoadSceneWithTransition(ParentsRoomScenes);
-                    SelectedRoom = SelectedRoom.ParentsRoom;
+                 case SecondFloorItem.BrothersRoomDoor:
+                    Debug.Log("You selected brothers room door");
+                    Dialog.GetRoomItem("SecondFloor","BrothersRoomDoor");
                     break;
                 case SecondFloorItem.GuestRoomDoor:
-                    Debug.Log("You selected the guest room door");
-                    List<string> GuestRoomScenes = new List<string> {"GuestRoom"};
-                    sceneManagerHelper.LoadSceneWithTransition(GuestRoomScenes);
-                    SelectedRoom = SelectedRoom.GuestRoom;
+                    Debug.Log("You selected Guest room door");
+                    Dialog.GetRoomItem("SecondFloor","GuestRoomDoor");
                     break;
                 case SecondFloorItem.StudyRoomDoor:
-                    Debug.Log("You selected the study room door");
-                    List<string> StudyRoomScenes = new List<string> {"StudyRoom"};
-                    sceneManagerHelper.LoadSceneWithTransition(StudyRoomScenes);
-                    SelectedRoom = SelectedRoom.BookRoom;
+                    Debug.Log("You selected Study room door");
+                    Dialog.GetRoomItem("SecondFloor","StudyRoomDoor");
                     break;
+                case SecondFloorItem.ParentsRoomDoor:
+                    Debug.Log("You selected Parents room door");
+                    Dialog.GetRoomItem("SecondFloor","ParentsRoomDoor");
+                    break;
+                // case SecondFloorItem.BrothersRoomDoor:
+                //     Debug.Log("You selected the brothers room door");
+                //     List<string> BrothersRoomScenes = new List<string> {"BrothersRoom"};
+                //     sceneManagerHelper.LoadSceneWithTransition(BrothersRoomScenes);
+                //     SelectedRoom = SelectedRoom.BrothersRoom;
+                //     break;
+                // case SecondFloorItem.ParentsRoomDoor:
+                //     Debug.Log("You selected the parents room door");
+                //     List<string> ParentsRoomScenes = new List<string> {"ParentsRoom"};
+                //     sceneManagerHelper.LoadSceneWithTransition(ParentsRoomScenes);
+                //     SelectedRoom = SelectedRoom.ParentsRoom;
+                //     break;
+                // case SecondFloorItem.GuestRoomDoor:
+                //     Debug.Log("You selected the guest room door");
+                //     List<string> GuestRoomScenes = new List<string> {"GuestRoom"};
+                //     sceneManagerHelper.LoadSceneWithTransition(GuestRoomScenes);
+                //     SelectedRoom = SelectedRoom.GuestRoom;
+                //     break;
+                // case SecondFloorItem.StudyRoomDoor:
+                //     Debug.Log("You selected the study room door");
+                //     List<string> StudyRoomScenes = new List<string> {"StudyRoom"};
+                //     sceneManagerHelper.LoadSceneWithTransition(StudyRoomScenes);
+                //     SelectedRoom = SelectedRoom.BookRoom;
+                //     break;
                 case SecondFloorItem.GuysRoomDoor:
                     Debug.Log("You selected the guys room door");
                     List<string> GuysRoomScenes = new List<string> {"GuysRoom"};

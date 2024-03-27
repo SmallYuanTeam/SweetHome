@@ -1,0 +1,9 @@
+[ChangeNPC,Guys]
+
+[show]
+
+這個門....被鎖住了。[w]
+[ChangeNPC,Sheep]
+看來需要找鑰匙。[w]
+
+[hide]

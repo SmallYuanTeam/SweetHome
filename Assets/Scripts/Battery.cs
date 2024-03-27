@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Microsoft.VisualBasic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,6 +7,7 @@ public class Battery : MonoBehaviour
     private Dialog dialog;
     private GameMasterScript gameMasterScript;
     private int progress = 0;
+    private bool isGoingToQTE = false;
     private bool isWaitingForDialog = false;
 
     void Awake()
@@ -22,7 +20,7 @@ public class Battery : MonoBehaviour
 
     void Update()
     {
-        if (!Dialog.DialogOn && !isWaitingForDialog)
+        if (!Dialog.DialogOn && !isWaitingForDialog && isGoingToQTE)
         {
             switch (progress)
             {
@@ -39,21 +37,24 @@ public class Battery : MonoBehaviour
     public void BatteryPickUp()
     {
         isWaitingForDialog = true;
-
-        if (progress == 0)
+        switch (progress)
         {
-            dialog.GetDialog("FirstMonster", "BatteryPickUp");
-            dialog.setDialog(() =>
-            {
-                progress = 1;
-                gameMasterScript.InventoryPanelDeactive();
-                isWaitingForDialog = false;
-            });
-        }
-        else if (progress == 1)
-        {
-            SceneManager.LoadScene("QTE", LoadSceneMode.Additive);
+            case 0:
+                dialog.GetDialog("FirstMonster", "BatteryPickUp");
+                dialog.setDialog(() =>
+                {
+                    progress = 1;
+                    gameMasterScript.InventoryPanelDeactive();
+                    isWaitingForDialog = false;
+                });
+                break;
+            case 1:
+                SceneManager.LoadScene("QTE", LoadSceneMode.Additive);
+                break;
         }
     }
-
+    public void _isGoingToQTE()
+    {
+        isGoingToQTE = true;
+    }
 }
