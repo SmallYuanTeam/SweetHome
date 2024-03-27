@@ -21,7 +21,7 @@ public class InventoryUI : MonoBehaviour
         for (int i = 0; i < itemSlots.Length; i++)
         {
             int index = i; // 由於閉包問題，我們需要在迴圈內部創建一個局部變數
-            itemSlots[i].onClick.AddListener(() => OnItemSlotClicked(index));
+            itemSlots[i].onClick.AddListener(() => StartCoroutine(OnItemSlotClicked(index)));
         }
         LoadAllRecipes();
         UpdateInventoryUI();
