@@ -421,7 +421,7 @@ MonoBehaviour:
   player: {fileID: 0}
   button: {fileID: 0}
   SceneName: LivingRoom_Table
-  GameItem: 1
+  GameItem: 0
 --- !u!114 &1243491511
 MonoBehaviour:
   m_ObjectHideFlags: 0
