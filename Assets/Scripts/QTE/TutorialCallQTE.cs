@@ -46,7 +46,7 @@ public class TutorialCallQTE : MonoBehaviour
                 progress = 1;
                 break;
             case 1:
-                dialog.GetDialog("FirstStory","FirstStory_08");
+                dialog.GetDialog("FirstMonster","FirstMonster_02");
                 dialog.setDialog();
                 QTESequenceController.SetUpQTESetting(4,5);
                 yield return new WaitUntil(() => dialog.DialogIsCompleted());
@@ -57,7 +57,7 @@ public class TutorialCallQTE : MonoBehaviour
                 Dialog.DialogSkipOn = false;
                 break;
             case 2:
-                dialog.GetDialog("FirstStory","FirstStory_08");
+                dialog.GetDialog("FirstMonster","FirstMonster_03");
                 dialog.setDialog();
                 QTESequenceController.SetUpQTESetting(5,7);
                 yield return new WaitUntil(() => dialog.DialogIsCompleted());
@@ -68,7 +68,7 @@ public class TutorialCallQTE : MonoBehaviour
                 Dialog.DialogSkipOn = false;
                 break;
             case 3:
-                dialog.GetDialog("FirstStory","FirstStory_08");
+                dialog.GetDialog("FirstMonster","FirstMonster_04");
                 dialog.setDialog();
                 QTESequenceController.SetUpQTESetting(6,9);
                 yield return new WaitUntil(() => dialog.DialogIsCompleted());
@@ -79,7 +79,7 @@ public class TutorialCallQTE : MonoBehaviour
                 Dialog.DialogSkipOn = false;
                 break;
             case 4:
-                dialog.GetDialog("FirstStory","FirstStory_08");
+                dialog.GetDialog("FirstMonster","FirstMonster_clear");
                 dialog.setDialog();
                 yield return new WaitUntil(() => dialog.DialogIsCompleted());
                 {
@@ -104,7 +104,7 @@ public class TutorialCallQTE : MonoBehaviour
     {
         if (!isCoroutineRunning && !isQTEDone)
         {
-            dialog.GetDialog("FirstMonster", "BatteryPickUp");
+            dialog.GetDialog("FirstMonster", "FirstMonster_01");
             dialog.setDialog();
             yield return new WaitUntil(() => dialog.DialogIsCompleted());
             isInsideQTE = true;
