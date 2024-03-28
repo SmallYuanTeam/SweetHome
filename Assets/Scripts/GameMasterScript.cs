@@ -571,6 +571,7 @@ public class GameMasterScript : MonoBehaviour
                     break;
                 case LivingRoom_TableItem.Battory:
                     Debug.Log("You selected the battory");
+                    Dialog.GetRoomItem("LivingRoom","Battory");
                     break;
                 case LivingRoom_TableItem.Return:
                     Debug.Log("You selected the return");
