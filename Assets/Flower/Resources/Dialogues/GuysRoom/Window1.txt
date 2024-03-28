@@ -1,0 +1,9 @@
+[ChangeNPC,Guys]
+
+[show]
+從這裡可以看院子！[w]
+但晚上爸爸會把院子的窗門鎖起來。[w]
+[ChangeNPC,Sheep]
+晚上好好鎖門是正常的，之後有機會再去吧！[w]
+
+[hide]
