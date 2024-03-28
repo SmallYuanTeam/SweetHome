@@ -137,6 +137,7 @@ GameObject:
   - component: {fileID: 489224875}
   - component: {fileID: 489224874}
   - component: {fileID: 489224878}
+  - component: {fileID: 489224879}
   m_Layer: 5
   m_Name: PenHolder
   m_TagString: Untagged
@@ -264,6 +265,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 489224879}
+        m_TargetAssemblyTypeName: TutorialCallQTE, Assembly-CSharp
+        m_MethodName: OnButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!222 &489224877
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -288,7 +301,21 @@ MonoBehaviour:
   imageA: {fileID: 1870782903}
   imageB: {fileID: 1305855471}
   Item: {fileID: 1243491508}
-  fadeDuration: 1
+  fadeDuration: 0.4
+--- !u!114 &489224879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 489224871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e94dcc65b87b8854097d5a3a59a3cd50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  QTESequenceController: {fileID: 0}
+  scene: QTE
 --- !u!1 &1208898574
 GameObject:
   m_ObjectHideFlags: 0
@@ -351,7 +378,6 @@ GameObject:
   - component: {fileID: 1243491512}
   - component: {fileID: 1243491511}
   - component: {fileID: 1243491510}
-  - component: {fileID: 1243491514}
   m_Layer: 5
   m_Name: Battory
   m_TagString: Untagged
@@ -470,19 +496,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1243491511}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1243491514}
-        m_TargetAssemblyTypeName: TutorialCallQTE, Assembly-CSharp
-        m_MethodName: OnButtonClick
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!222 &1243491513
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -491,20 +505,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1243491508}
   m_CullTransparentMesh: 1
---- !u!114 &1243491514
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1243491508}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e94dcc65b87b8854097d5a3a59a3cd50, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  QTESequenceController: {fileID: 0}
-  scene: QTE
 --- !u!1 &1305855471
 GameObject:
   m_ObjectHideFlags: 0
