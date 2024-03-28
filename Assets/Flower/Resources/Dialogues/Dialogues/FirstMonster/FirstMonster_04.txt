@@ -1,0 +1,11 @@
+[ChangeNPC,Sheep]
+
+[show]
+
+深呼吸蓋伊，放鬆放鬆。[w]
+[ChangeNPC,Guys]
+呼....呼........呼...........[w]
+
+[hide]
+
+

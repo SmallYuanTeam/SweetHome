@@ -1,8 +1,7 @@
-[ChangeNPC,Universal]
+[ChangeNPC,Guys]
 
 [show]
 
-[ChangeNPC,Guys]
 哈.....哈.....哈......[w]
 [ChangeNPC,Sheep]
 蓋伊，保持冷靜，我會在旁邊幫助你的！[w]
