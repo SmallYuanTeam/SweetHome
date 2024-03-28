@@ -10,8 +10,12 @@ public class QTESequenceController : MonoBehaviour
     private List<KeyCode> currentSequence = new List<KeyCode>();
     private bool isSequenceActive = false;
     public bool isSequenceCompleted = false;
-    public float timeBetweenSequences = 2f;
-
+    public float timeBetweenSequences = 1f;
+    public float timeLimit = 99f;
+    private float timeRemaining;
+    public Slider timeRemainingSlider;
+    public bool isTutorialMode = false;
+    public bool isGameOver = false;
     private Dictionary<KeyCode, string> keyCodeToResourcePath = new Dictionary<KeyCode, string>()
     {
         { KeyCode.UpArrow, "QTE/Up" },
@@ -31,30 +35,65 @@ public class QTESequenceController : MonoBehaviour
     {
         if (isSequenceActive && currentSequence.Count > 0)
         {
-            isSequenceCompleted = false;
-            KeyCode expectedKey = currentSequence[currentIndex];
-            if (Input.GetKeyDown(expectedKey))
+            if (timeRemaining > 0)
             {
-                // 正确的按键被按下
-                qteImages[currentIndex].gameObject.SetActive(false);
-                currentIndex++;
-
-                if (currentIndex >= currentSequence.Count)
+                timeRemaining -= Time.deltaTime;
+                if (timeRemainingSlider != null)
                 {
-                    Debug.Log("QTE Sequence Completed Successfully!");
-                    isSequenceActive = false;
-                    StartCoroutine(WaitAndStartNewSequence(timeBetweenSequences));
-                    isSequenceCompleted = true;
+                    timeRemainingSlider.value = timeRemaining;
                 }
             }
-            else if (Input.anyKeyDown)
+            else
             {
-
-                Debug.Log("Incorrect Key Pressed. Resetting QTE...");
-                ResetQTE();
+                if (isTutorialMode) // 新手教學模式下時間耗光
+                {
+                    Debug.Log("Tutorial Mode: Time's Up! Resetting Time...");
+                    timeRemaining = timeLimit;
+                    if (timeRemainingSlider != null)
+                    {
+                        timeRemainingSlider.value = timeLimit;
+                    }
+                }
+                else // 遊戲模式下時間耗光
+                {
+                    Debug.Log("Time's Up! Game Over...");
+                    isGameOver = true;
+                    isSequenceActive = false;
+                    
+                }
+                return;
             }
+
+            ProcessKeyPress();
         }
     }
+
+    void ProcessKeyPress()
+    {
+        isSequenceCompleted = false;
+        KeyCode expectedKey = currentSequence[currentIndex];
+        if (Input.GetKeyDown(expectedKey))
+        {
+            // 正确的按键被按下
+            qteImages[currentIndex].gameObject.SetActive(false);
+            currentIndex++;
+
+            if (currentIndex >= currentSequence.Count)
+            {
+                Debug.Log("QTE Sequence Completed Successfully!");
+                isSequenceActive = false;
+                //StartCoroutine(WaitAndStartNewSequence(timeBetweenSequences));
+                isSequenceCompleted = true;
+            }
+        }
+        else if (Input.anyKeyDown)
+        {
+            Debug.Log("Incorrect Key Pressed. Resetting QTE...");
+            ResetQTE();
+        }
+    }
+
+
 
     IEnumerator WaitAndStartNewSequence(float delay)
     {
@@ -70,7 +109,12 @@ public class QTESequenceController : MonoBehaviour
         isSequenceActive = true;
         currentSequence.Clear();
         HideAllQTEImages();
-
+        timeRemaining = timeLimit;
+        if (timeRemainingSlider != null)
+        {
+            timeRemainingSlider.maxValue = timeLimit;
+            timeRemainingSlider.value = timeLimit;
+        }
         for (int i = 0; i < sequenceLength; i++)
         {
             KeyCode randomKey = GetRandomKeyCode();
@@ -82,10 +126,11 @@ public class QTESequenceController : MonoBehaviour
 
         Debug.Log("New QTE Sequence Started: " + string.Join(", ", currentSequence));
     }
-    public void SetUpQTESetting(int sequenceLength, float timeBetweenSequences)
+    public void SetUpQTESetting(int sequenceLength, float timeLimit)
     {
         this.sequenceLength = sequenceLength;
-        this.timeBetweenSequences = timeBetweenSequences;
+        this.timeLimit = timeLimit;
+        isSequenceCompleted = false;
     }
     KeyCode GetRandomKeyCode()
     {

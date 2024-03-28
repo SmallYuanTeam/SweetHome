@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
+
 
 public class Item : MonoBehaviour
 {
@@ -10,6 +8,7 @@ public class Item : MonoBehaviour
     public Player player;
     public Button button;
     public string SceneName;
+    public bool GameItem = false;
     Dialog Dialog;
 
     void Start()
@@ -30,10 +29,18 @@ public class Item : MonoBehaviour
     }
     public void OnItemPickedUp()
     {
-        // 假设这个方法在物品被玩家拾取时被调用
-        Player.Instance.AddItemToInventory(item);
-        Dialog.GetRoomItem(SceneName,item.itemID);
-        Player.Instance.AddObtainedItemID(item.itemID);
-        gameObject.SetActive(false); // 隐藏物品
+        if (!GameItem)
+        {
+            // 假设这个方法在物品被玩家拾取时被调用
+            Player.Instance.AddItemToInventory(item);
+            Dialog.GetRoomItem(SceneName,item.itemID);
+            Player.Instance.AddObtainedItemID(item.itemID);
+            gameObject.SetActive(false); // 隐藏物品
+        }
+        else
+        {
+            GameItem = false;
+        }
+        
     }
 }

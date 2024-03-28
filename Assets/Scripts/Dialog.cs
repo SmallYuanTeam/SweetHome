@@ -14,6 +14,7 @@ public class Dialog : MonoBehaviour
     public bool FirstDialogOn = false;
     public static bool DialogOn = false;
     public static bool DialogSkipOn = false;
+    public event Action OnDialogCompleted;
     private Button DialogButton;
     private Button DialogSkip;
     private GameObject DialogPanel;
