@@ -9,23 +9,36 @@ public class GuysSceneItem : MonoBehaviour
     public CanInteractAgain canInteractAgain;
     public GameObject imageA;
     public GameObject imageB;
-    public GameObject Item;
+    public string Item;
+    public string Room;
+    public string ItemID;
 
     private bool isShowingA = true;
     public float fadeDuration = 1f;
-
+    Player player;
+    Dialog Dialog;
     void Start()
     {
         canInteractAgain = FindObjectOfType<CanInteractAgain>();
+        player = FindObjectOfType<Player>();
+        Dialog = GameObject.Find("Dialog").GetComponent<Dialog>();
     }
     // 當按鈕被點擊
     public void OnClick()
     {
-        if (canInteractAgain.interactCount == 0)
+        // 如果玩家已經獲得物品 或 物品沒有資料
+        if (player.HasObtainedItem(Item) || Item == "")
         {
-            StartCoroutine(FadeTransition(imageA, imageB));
-        
+            if (canInteractAgain.interactCount == 0)
+            {
+                StartCoroutine(FadeTransition(imageA, imageB));
+            }
         }
+        else
+        {
+            Dialog.GetRoomItem(Room, ItemID);
+        }
+
     }
     IEnumerator FadeTransition(GameObject fadeOutObject, GameObject fadeInObject)
     {
@@ -52,12 +65,5 @@ public class GuysSceneItem : MonoBehaviour
         fadeOutGroup.interactable = false;
         fadeOutGroup.blocksRaycasts = false;
         fadeInGroup.interactable = true;
-    }
-
-    void ItemPickUp(Image image)
-    {
-        Item.SetActive(isShowingA);
-        Item.GetComponent<Image>().color = image.color;
-        Item.GetComponent<Button>().interactable = isShowingA;
     }
 }

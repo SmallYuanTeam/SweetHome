@@ -20,6 +20,7 @@ public enum SelectedRoom
     LivingRoom_TVCabinet, // 客廳電視櫃
     LivingRoom_TVDrawer, // 客廳電視櫃抽屜
     UtilityRoom,    // 雜物間
+    UtilityRoom_Broom, // 雜物間掃把
     GuestRoom,      // 客房
     BookRoom,       // 書房
     Balcony,        // 陽台
@@ -107,6 +108,18 @@ public enum LivingRoom_SafeItem
 {
     none,
     Safe,
+    P0,
+    P1,
+    P2,
+    P3,
+    P4,
+    P5,
+    P6,
+    P7,
+    P8,
+    P9,
+    Check,
+    Backspace,
     Return
 }
 public enum LivingRoom_SofaItem
@@ -134,6 +147,7 @@ public enum LivingRoom_TVCabinetItem
 public enum LivingRoom_TVDrawerItem
 {
     none,
+    Scissors,
     Return
 }
 public enum UtilityRoomItem
@@ -144,7 +158,13 @@ public enum UtilityRoomItem
     VacuumCleaner,
     FirstFloorDoor
 }
-
+public enum UtilityRoom_BroomItem
+{
+    none,
+    Broom,
+    Car,
+    Return
+}
 public enum BrothersRoomItem
 {
     none
@@ -172,6 +192,7 @@ public class GameMasterScript : MonoBehaviour
     public LivingRoom_TVCabinetItem LivingRoom_TVCabinetItem;
     public LivingRoom_TVDrawerItem LivingRoom_TVDrawerItem;
     public UtilityRoomItem UtilityRoomItem;
+    public UtilityRoom_BroomItem UtilityRoom_BroomItem;
 
     Dialog Dialog;
 
@@ -527,10 +548,11 @@ public class GameMasterScript : MonoBehaviour
                     break;
                 case LivingRoom_SafeItem.Return:
                     Debug.Log("You selected the return");
-                    List<string> LivingRoomScenes = new List<string> {"LivingRoom"};
-                    sceneManagerHelper.LoadSceneWithTransition(LivingRoomScenes);
-                    SelectedRoom = SelectedRoom.LivingRoom;
+                    List<string> LivingRoom_TVCabinetScenes = new List<string> {"LivingRoom_TVCabinet"};
+                    sceneManagerHelper.LoadSceneWithTransition(LivingRoom_TVCabinetScenes);
+                    SelectedRoom = SelectedRoom.LivingRoom_TVCabinet;
                     break;
+                
                 default:
                     Debug.Log("You selected nothing");
                     break;
@@ -602,9 +624,17 @@ public class GameMasterScript : MonoBehaviour
                     break;
                 case LivingRoom_TVCabinetItem.TVDrawer:
                     Debug.Log("You selected the TV drawer");
-                    List<string> LivingRoomTVDrawerScenes = new List<string> {"LivingRoom_TVDrawer"};
-                    sceneManagerHelper.LoadSceneWithTransition(LivingRoomTVDrawerScenes);
-                    SelectedRoom = SelectedRoom.LivingRoom_TVDrawer;
+                    //如果玩家身上有鑰匙
+                    if (Player.Instance.HasObtainedItem("Key"))
+                    {
+                        List<string> LivingRoomTVDrawerScenes = new List<string> {"LivingRoom_TVDrawer"};
+                        sceneManagerHelper.LoadSceneWithTransition(LivingRoomTVDrawerScenes);
+                        SelectedRoom = SelectedRoom.LivingRoom_TVDrawer;
+                    }
+                    else
+                    {
+                        Dialog.GetRoomItem("LivingRoom_TVCabinet","TVDrawer");
+                    }
                     break;
                 default:
                     Debug.Log("You selected nothing");
@@ -620,6 +650,10 @@ public class GameMasterScript : MonoBehaviour
                     List<string> LivingRoomScenes = new List<string> {"LivingRoom"};
                     sceneManagerHelper.LoadSceneWithTransition(LivingRoomScenes);
                     SelectedRoom = SelectedRoom.LivingRoom;
+                    break;
+                case LivingRoom_TVDrawerItem.Scissors:
+                    Debug.Log("You selected the scissors");
+                    Dialog.GetRoomItem("LivingRoom_TVDrawer","Scissors");
                     break;
                 default:
                     Debug.Log("You selected nothing");
@@ -638,7 +672,9 @@ public class GameMasterScript : MonoBehaviour
                     break;
                 case UtilityRoomItem.Broom:
                     Debug.Log("You selected the broom");
-                    Dialog.GetRoomItem("UtilityRoom","Broom");
+                    List<string> UtilityRoom_BroomScenes = new List<string> {"UtilityRoom_Broom"};
+                    sceneManagerHelper.LoadSceneWithTransition(UtilityRoom_BroomScenes);
+                    SelectedRoom = SelectedRoom.UtilityRoom_Broom;
                     break;
                 case UtilityRoomItem.TowelRack:
                     Debug.Log("You selected the towel rack");
@@ -646,6 +682,28 @@ public class GameMasterScript : MonoBehaviour
                 case UtilityRoomItem.VacuumCleaner:
                     Debug.Log("You selected the vacuum cleaner");
                     Dialog.GetRoomItem("UtilityRoom","VacuumCleaner");
+                    break;
+                default:
+                    Debug.Log("You selected nothing");
+                    break;
+            }
+        }
+        else if (SelectedRoom == SelectedRoom.UtilityRoom_Broom)
+        {
+            switch (UtilityRoom_BroomItem)
+            {
+                case UtilityRoom_BroomItem.Broom:
+                    Debug.Log("You selected the broom");
+                    break;
+                case UtilityRoom_BroomItem.Car:
+                    Debug.Log("You selected the car");
+                    Dialog.GetRoomItem("UtilityRoom_Broom","Car");
+                    break;
+                case UtilityRoom_BroomItem.Return:
+                    Debug.Log("You selected the return");
+                    List<string> UtilityRoomScenes = new List<string> {"UtilityRoom"};
+                    sceneManagerHelper.LoadSceneWithTransition(UtilityRoomScenes);
+                    SelectedRoom = SelectedRoom.UtilityRoom;
                     break;
                 default:
                     Debug.Log("You selected nothing");

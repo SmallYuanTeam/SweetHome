@@ -9,7 +9,7 @@ public class Safe : MonoBehaviour
     public CanInteractAgain canInteractAgain;
     public GameObject imageA;
     public GameObject imageB;
-    public GameObject Item;
+
 
     private bool isShowingA = true;
     public float fadeDuration = 1f;
@@ -54,10 +54,5 @@ public class Safe : MonoBehaviour
         fadeInGroup.interactable = true;
     }
 
-    void ItemPickUp(Image image)
-    {
-        Item.SetActive(isShowingA);
-        Item.GetComponent<Image>().color = image.color;
-        Item.GetComponent<Button>().interactable = isShowingA;
-    }
+
 }
