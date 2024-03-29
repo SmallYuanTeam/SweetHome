@@ -13,11 +13,18 @@ public class MainMenu : MonoBehaviour
         gameMasterScript = FindObjectOfType<GameMasterScript>();
     }
 
-    public void StartGame()
+    public void StartGame1()
     {
         //List<string> scenesToLoad = new List<string> {"StoryStart"};
         List<string> scenesToLoad = new List<string> {"GuysRoom"};
         gameMasterScript.InventoryPanelActive();
+        sceneManagerHelper.LoadSceneWithTransition(scenesToLoad);
+    }
+    public void StartGame2()
+    {
+        List<string> scenesToLoad = new List<string> {"StoryStart"};
+        // List<string> scenesToLoad = new List<string> {"GuysRoom"};
+        // gameMasterScript.InventoryPanelActive();
         sceneManagerHelper.LoadSceneWithTransition(scenesToLoad);
     }
 }
