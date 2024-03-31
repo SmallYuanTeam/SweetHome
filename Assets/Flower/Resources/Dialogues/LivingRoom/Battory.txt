@@ -1,0 +1,11 @@
+[ChangeNPC,Guys]
+
+[show]
+
+肖恩！我找到電池了。[w]
+[ChangeNPC,Sheep]
+太棒了，讓手電筒發亮了！[w]
+[ChangeNPC,Universal]
+獲得了電池。[w]
+
+[hide]
