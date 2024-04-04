@@ -26,7 +26,7 @@ public enum SelectedRoom
     Balcony,        // 陽台
     Kitchen,        // 廚房
     Bathroom,       // 浴室
-    Gurden          // 花園
+    Gurden,          // 花園
     
 }
 public enum GuysRoomItem // 完成
@@ -40,6 +40,7 @@ public enum GuysRoomItem // 完成
     Chair,
     Window1,
     Window2,
+    GuestRoomDoor,
     GarbageCan
 }
 public enum GuysTableItem // 完成
@@ -81,7 +82,7 @@ public enum SecondFloorItem // 完成
     GuysRoomDoor,
     FirstFloorDoor
 }
-public enum FirstFloorItem
+public enum FirstFloorItem // 完成
 {
     none,
     SecondFloorDoor,
@@ -93,7 +94,7 @@ public enum FirstFloorItem
     Carpet,
     LivingRoomDoor
 }
-public enum LivingRoomItem
+public enum LivingRoomItem // 完成
 {
     none,
     TV,
@@ -104,7 +105,7 @@ public enum LivingRoomItem
     Sofa,
     FirstFloorDoor
 }
-public enum LivingRoom_SafeItem
+public enum LivingRoom_SafeItem // 完成
 {
     none,
     Safe,
@@ -122,7 +123,7 @@ public enum LivingRoom_SafeItem
     Backspace,
     Return
 }
-public enum LivingRoom_SofaItem
+public enum LivingRoom_SofaItem // 完成
 {
     none,
     Sofa,
@@ -130,27 +131,27 @@ public enum LivingRoom_SofaItem
     Key,
     Return
 }
-public enum LivingRoom_TableItem
+public enum LivingRoom_TableItem // 完成
 {
     none,
     PenHolder,
     Battory,
     Return
 }
-public enum LivingRoom_TVCabinetItem
+public enum LivingRoom_TVCabinetItem // 完成
 {
     none,
     Safe,
     TVDrawer,
     Return
 }
-public enum LivingRoom_TVDrawerItem
+public enum LivingRoom_TVDrawerItem // 完成
 {
     none,
     Scissors,
     Return
 }
-public enum UtilityRoomItem
+public enum UtilityRoomItem // 完成
 {
     none,
     Broom,
@@ -158,20 +159,27 @@ public enum UtilityRoomItem
     VacuumCleaner,
     FirstFloorDoor
 }
-public enum UtilityRoom_BroomItem
+public enum UtilityRoom_BroomItem 
 {
     none,
     Broom,
     Car,
     Return
 }
-public enum BrothersRoomItem
+public enum BrothersRoomItem // 完成
 {
     none
 }
-public enum ParentsRoomItem
+public enum ParentsRoomItem // 完成
 {
     none
+}
+public enum GuestRoomItem // 完成
+{
+    none,
+    Report,
+    Memory,
+    Return
 }
 public class GameMasterScript : MonoBehaviour
 {
@@ -193,6 +201,7 @@ public class GameMasterScript : MonoBehaviour
     public LivingRoom_TVDrawerItem LivingRoom_TVDrawerItem;
     public UtilityRoomItem UtilityRoomItem;
     public UtilityRoom_BroomItem UtilityRoom_BroomItem;
+    public GuestRoomItem GuestRoomItem;
 
     Dialog Dialog;
 
@@ -250,6 +259,12 @@ public class GameMasterScript : MonoBehaviour
                     List<string> SecondFloorScenes = new List<string> {"SecondFloor"};
                     sceneManagerHelper.LoadSceneWithTransition(SecondFloorScenes);
                     SelectedRoom = SelectedRoom.SecondFloor;
+                    break;
+                case GuysRoomItem.GuestRoomDoor:
+                    Debug.Log("You selected the GuestRoom Door");
+                    List<string> GuestRoomScene = new List<string> {"GuestRoom"};
+                    sceneManagerHelper.LoadSceneWithTransition(GuestRoomScene);
+                    SelectedRoom = SelectedRoom.GuestRoom;
                     break;
                 case GuysRoomItem.Carpet:
                     Debug.Log("You selected the carpet");
@@ -701,6 +716,27 @@ public class GameMasterScript : MonoBehaviour
                     break;
                 case UtilityRoom_BroomItem.Return:
                     Debug.Log("You selected the return");
+                    List<string> UtilityRoomScenes = new List<string> {"UtilityRoom"};
+                    sceneManagerHelper.LoadSceneWithTransition(UtilityRoomScenes);
+                    SelectedRoom = SelectedRoom.UtilityRoom;
+                    break;
+                default:
+                    Debug.Log("You selected nothing");
+                    break;
+            }
+        }
+        else if (SelectedRoom == SelectedRoom.GuestRoom)
+        {
+            switch (GuestRoomItem)
+            {
+                case GuestRoomItem.Report:
+                    Debug.Log("You selected the report");
+                    List<string> GuysRoomScenes = new List<string> {"GuysRoom"};
+                    sceneManagerHelper.LoadSceneWithTransition(GuysRoomScenes);
+                    SelectedRoom = SelectedRoom.GuysRoom;
+                    break;
+                case GuestRoomItem.Memory:
+                    Debug.Log("You selected the memory");
                     List<string> UtilityRoomScenes = new List<string> {"UtilityRoom"};
                     sceneManagerHelper.LoadSceneWithTransition(UtilityRoomScenes);
                     SelectedRoom = SelectedRoom.UtilityRoom;
