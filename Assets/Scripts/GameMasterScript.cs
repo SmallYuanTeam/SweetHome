@@ -731,9 +731,11 @@ public class GameMasterScript : MonoBehaviour
             {
                 case GuestRoomItem.Report:
                     Debug.Log("You selected the report");
-                    List<string> GuysRoomScenes = new List<string> {"GuysRoom"};
-                    sceneManagerHelper.LoadSceneWithTransition(GuysRoomScenes);
-                    SelectedRoom = SelectedRoom.GuysRoom;
+                    SelectedObject = GameObject.Find("Report");
+                    if (SelectedObject != null)
+                    {
+                        interactScript = SelectedObject.GetComponent<CanInteractAgain>();
+                    }
                     break;
                 case GuestRoomItem.Memory:
                     Debug.Log("You selected the memory");
