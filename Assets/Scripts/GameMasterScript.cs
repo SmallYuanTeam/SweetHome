@@ -177,6 +177,8 @@ public enum ParentsRoomItem // 完成
 public enum GuestRoomItem // 完成
 {
     none,
+    Select,
+    block,
     Report,
     Memory,
     Return
@@ -737,9 +739,25 @@ public class GameMasterScript : MonoBehaviour
                         interactScript = SelectedObject.GetComponent<CanInteractAgain>();
                     }
                     break;
+                case GuestRoomItem.Select:
+                    Debug.Log("You selected the textA");
+                    SelectedObject = GameObject.Find("Select");
+                    if (SelectedObject != null)
+                    {
+                        interactScript = SelectedObject.GetComponent<CanInteractAgain>();
+                    }
+                    break;
+                case GuestRoomItem.block:
+                    Debug.Log("You selected the textB");
+                    SelectedObject = GameObject.Find("block");
+                    if (SelectedObject != null)
+                    {
+                        interactScript = SelectedObject.GetComponent<CanInteractAgain>();
+                    }
+                    break;
                 case GuestRoomItem.Memory:
                     Debug.Log("You selected the memory");
-                    List<string> UtilityRoomScenes = new List<string> {"UtilityRoom"};
+                    List<string> UtilityRoomScenes = new List<string> {"memory"};
                     sceneManagerHelper.LoadSceneWithTransition(UtilityRoomScenes);
                     SelectedRoom = SelectedRoom.UtilityRoom;
                     break;
