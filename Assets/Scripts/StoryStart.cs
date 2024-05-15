@@ -28,7 +28,7 @@ public class StoryStart : MonoBehaviour
 
     IEnumerator ProcessStoryProgress()
     {
-        isCoroutineRunning = true; // 标记协程正在运行
+        isCoroutineRunning = true;
 
         switch (progress)
             {

@@ -519,8 +519,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Sweet     Home
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8ca5325729e7de64984728cf3769795f, type: 2}
-  m_sharedMaterial: {fileID: 6854004091691768446, guid: 8ca5325729e7de64984728cf3769795f, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f1b52d78a5ff902499648cec6a7dad02, type: 2}
+  m_sharedMaterial: {fileID: -3802308971722600024, guid: f1b52d78a5ff902499648cec6a7dad02, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
